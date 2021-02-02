@@ -1,7 +1,10 @@
-RSpec.describe "#new", type: :request do
-  describe "GET new_user_registration_path" do
+RSpec.describe "#edit", type: :request do
+  describe "GET edit_user_registration_path" do
+    let(:user) { create(:user) }
+
     before do
-      get new_user_registration_path
+      sign_in user
+      get edit_user_registration_path(user.id)
     end
 
     # サクセスが返ってくること
@@ -14,9 +17,9 @@ RSpec.describe "#new", type: :request do
       expect(response).to have_http_status(200)
     end
 
-    # newテンプレートが返ってくること
+    # editテンプレートが返ってくること
     it "render new_template" do
-      expect(response).to render_template :new
+      expect(response).to render_template :edit
     end
   end
 end
