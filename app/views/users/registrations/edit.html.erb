@@ -14,15 +14,9 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :favorite_team %><br />
-    <%= f.text_field :favorite_team, autocomplete: "favorite_team" %>
-  </div>
+  <%= render 'favorite_team_list', f: f %>
 
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autocomplete: "address" %>
-  </div>
+  <%= render 'address_list', f: f %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
