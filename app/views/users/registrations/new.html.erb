@@ -14,9 +14,15 @@
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
-  <%= render 'favorite_team_list', f: f %>
+  <div class="field">
+    <%= f.label :favorite_team %><br />
+    <%= f.select :favorite_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class:"form-control" %>
+  </div>
 
-  <%= render 'address_list', f: f %>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.select :address, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class:"form-control" %>
+  </div>
 
   <div class="field">
     <%= f.label :password %>
