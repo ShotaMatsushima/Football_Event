@@ -38,6 +38,15 @@ RSpec.describe Event, type: :model do
       end
     end
 
+    # ユーザーidが存在しない場合、有効でないこと
+    context "when user_id is blank" do
+      it "is invalid without user_id" do
+        event.user_id = nil
+        event.valid?
+        expect(event.errors[:user_id]).to include("can't be blank")
+      end
+    end
+
     # イベント名が存在しない場合、有効でないこと
     context "when event_name is blank" do
       it "is invalid without event_name" do
