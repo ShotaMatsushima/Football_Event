@@ -25,9 +25,27 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "GET /show" do
-    it "returns http success" do
-      get "/events/show"
-      expect(response).to have_http_status(:success)
+      before do
+        sign_in user
+        get event_path(event.id)
+      end
+
+      it "returns http success" do
+      # 正しいレスポンスが返ってくること
+      expect(response).to be_successful
+      expect(response).to have_http_status(200)
+      expect(response).to render_template :show
+
+      # インスタンス変数が同じであること
+      expect(assigns(:event)).to eq event
+
+      # 登録したユーザー情報が存在していること
+      expect(response.body).to include event.event_name
+      expect(response.body).to include event.description
+      expect(response.body).to include event.event_address
+      expect(response.body).to include event.event_at
+      expect(response.body).to include event.event_team
+      expect(response.body).to include event.capacity
     end
   end
 

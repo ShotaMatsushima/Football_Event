@@ -1,5 +1,7 @@
 <% provide(:title, "Event new") %>
 <%= form_with(model: @event, local: true) do |f| %>
+  <%= render "users/shared/error_messages", resource: @event %>
+
   <div class="field">
     <%= f.label :event_name, "イベント名" %><br />
     <%= f.text_field :event_name, autofocus: true, class: 'form-control' %>
