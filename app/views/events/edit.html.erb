@@ -1,2 +1,35 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<% provide(:title, "#{ @event.event_name } edit") %>
+<%= form_with(model: @event, local: true) do |f| %>
+  <%= render "users/shared/error_messages", resource: @event %>
+
+  <div class="field">
+    <%= f.label :event_name, "イベント名" %><br />
+    <%= f.text_field :event_name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, "イベント説明" %><br />
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :event_address, "イベント住所" %><br />
+    <%= f.select :event_address, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :event_at, "イベント日程" %><br />
+    <%= f.datetime_field :event_at, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :event_team, "イベントチーム" %><br />
+    <%= f.select :event_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :capacity, "定員数" %><br />
+    <%= f.number_field :capacity, min: 2, class: 'form-control' %>
+  </div>
+  <%= f.submit "update" %>
+<% end %>

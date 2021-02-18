@@ -1,6 +1,6 @@
 RSpec.describe "Events", type: :request do
-  let(:event) { create(:event) }
   let(:user) { create(:user) }
+  let(:event) { create(:event, user: user) }
 
   describe "GET /index" do
     it "returns http success" do
@@ -11,13 +11,11 @@ RSpec.describe "Events", type: :request do
 
   # newアクションのテスト
   describe "GET /new" do
-    before do
+    it "response success" do
       sign_in user
       get new_event_path
-    end
 
-    # 正しいレスポンスが返ってくること
-    it "response success" do
+      # 正しいレスポンスが返ってくること
       expect(response).to be_successful
       expect(response).to have_http_status(200)
       expect(response).to render_template :new
@@ -25,12 +23,10 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "GET /show" do
-      before do
-        sign_in user
-        get event_path(event.id)
-      end
+    it "returns http success" do
+      sign_in user
+      get event_path(event.id)
 
-      it "returns http success" do
       # 正しいレスポンスが返ってくること
       expect(response).to be_successful
       expect(response).to have_http_status(200)
@@ -43,16 +39,21 @@ RSpec.describe "Events", type: :request do
       expect(response.body).to include event.event_name
       expect(response.body).to include event.description
       expect(response.body).to include event.event_address
-      expect(response.body).to include event.event_at
+      expect(response.body).to include event.event_at.to_s
       expect(response.body).to include event.event_team
-      expect(response.body).to include event.capacity
+      expect(response.body).to include event.capacity.to_s
     end
   end
 
   describe "GET /edit" do
     it "returns http success" do
-      get "/events/edit"
-      expect(response).to have_http_status(:success)
+      sign_in user
+      get edit_event_path(event.id)
+
+      # 正しいレスポンスが返ってくること
+      expect(response).to be_successful
+      expect(response).to have_http_status(200)
+      expect(response).to render_template :edit
     end
   end
 end
