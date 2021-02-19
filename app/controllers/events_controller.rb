@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def index
+    @events = Event.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new
@@ -9,7 +10,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      redirect_to event_path(@event.id)
+      redirect_to root_path
     else
       render 'new'
     end
