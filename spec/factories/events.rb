@@ -4,7 +4,8 @@ FactoryBot.define do
     event_name { "サッカーを観戦しよう" }
     description { "サッカーイベントです" }
     event_address { "東京都" }
-    event_at { DateTime.now }
+    event_start_at { DateTime.now }
+    event_end_at { DateTime.now.tomorrow }
     event_team { "Liverpool" }
     capacity { 5 }
   end

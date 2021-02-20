@@ -18,6 +18,14 @@ RSpec.describe Event, type: :model do
         expect(event).to be_valid
       end
     end
+
+    # 定員数が2人の時、有効であること
+    context "when capacity is 2" do
+      it "has a valid description" do
+        event.capacity = 2
+        expect(event).to be_valid
+      end
+    end
   end
 
   # 有効でない値を入力し有効でないこと
@@ -34,6 +42,14 @@ RSpec.describe Event, type: :model do
     context "when description is 1001" do
       it "has a valid description" do
         event.description = "a" * 1001
+        expect(event).to be_invalid
+      end
+    end
+
+    # 定員数が1人の時、有効でないこと
+    context "when capacity is 1" do
+      it "has a valid description" do
+        event.capacity = 1
         expect(event).to be_invalid
       end
     end
@@ -74,12 +90,21 @@ RSpec.describe Event, type: :model do
       end
     end
 
-    # イベント日時が存在しない場合、有効でないこと
-    context "when event_at is blank" do
+    # イベント開始日時が存在しない場合、有効でないこと
+    context "when event_start_at is blank" do
       it "is invalid without event_at" do
-        event.event_at = nil
+        event.event_start_at = nil
         event.valid?
-        expect(event.errors[:event_at]).to include("can't be blank")
+        expect(event.errors[:event_start_at]).to include("can't be blank")
+      end
+    end
+
+    # イベント終了日時が存在しない場合、有効でないこと
+    context "when event_end_at is blank" do
+      it "is invalid without event_end_at" do
+        event.event_end_at = nil
+        event.valid?
+        expect(event.errors[:event_end_at]).to include("can't be blank")
       end
     end
 
