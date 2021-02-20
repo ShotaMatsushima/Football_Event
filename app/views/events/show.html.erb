@@ -6,3 +6,8 @@
 <p>イベント日時 <%= @event.event_at %> </p>
 <p>イベントチーム <%= @event.event_team %> </P>
 <p>定員数 <%= @event.capacity %> <p>
+<% if current_user?(@event.user) %>
+  <%= link_to "edit", edit_event_path(@event.id) %>
+  <%= link_to "delete", @event, method: :delete,
+                data: { confirm: "You sure?" } %>
+<% end %>

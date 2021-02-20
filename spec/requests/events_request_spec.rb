@@ -61,4 +61,19 @@ RSpec.describe "Events", type: :request do
       expect(response).to render_template :edit
     end
   end
+
+  describe "DELETE /destroy" do
+    it "returns http success" do
+      sign_in user
+      get event_path(event.id)
+
+      # イベントが削除できること
+      expect {
+        delete event_path(event.id)
+      }.to change(Event, :count).by(-1)
+
+      # 正しいレスポンスが返ってくること
+      expect(response).to have_http_status(302)
+    end
+  end
 end
