@@ -12,14 +12,14 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      redirect_to root_path
+      redirect_to root_url
     else
       render 'new'
     end
   end
 
   def show
-    @event = current_user.events.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
   def edit
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   def update
     @event = current_user.events.build(event_params)
     if @event.save
-      redirect_to event_path(@event.id)
+      redirect_to event_url(@event.id)
     else
       render 'edit'
     end
@@ -37,7 +37,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to request.referrer || root_url
+    redirect_to root_url
   end
 
   private

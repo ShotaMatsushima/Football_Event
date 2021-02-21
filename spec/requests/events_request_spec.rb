@@ -1,6 +1,7 @@
 RSpec.describe "Events", type: :request do
   let(:user) { create(:user) }
   let(:event) { create(:event, user: user) }
+  let(:event_params) { attributes_for(:event_params) }
 
   describe "GET /index" do
     it "returns http success" do
@@ -24,6 +25,17 @@ RSpec.describe "Events", type: :request do
       expect(response).to be_successful
       expect(response).to have_http_status(200)
       expect(response).to render_template :new
+    end
+  end
+
+  describe "POST /create" do
+    it "response success" do
+      sign_in user
+      post :create, params: event_params
+
+      # 正しいレスポンスが返ってくること
+      expect(response).to be_successful
+      expect(response).to have_http_status(200)
     end
   end
 
@@ -63,15 +75,23 @@ RSpec.describe "Events", type: :request do
     end
   end
 
+  describe "PATCH /update" do
+    it "returns http success" do
+      sign_in user
+      patch event_path(user.id)
+
+      # 正しいレスポンスが返ってくること
+      expect(response).to have_http_status(302)
+    end
+  end
+
   describe "DELETE /destroy" do
     it "returns http success" do
       sign_in user
       get event_path(event.id)
 
       # イベントが削除できること
-      expect {
-        delete event_path(event.id)
-      }.to change(Event, :count).by(-1)
+      expect { delete event_path(event.id) }.to change(Event, :count).by(-1)
 
       # 正しいレスポンスが返ってくること
       expect(response).to have_http_status(302)
