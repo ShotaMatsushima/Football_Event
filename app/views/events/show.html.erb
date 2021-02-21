@@ -1,5 +1,4 @@
 <% provide(:title, @event.event_name) %>
-<h1>Events#show</h1>
 <p>イベント名 <%= @event.event_name %> </p>
 <p>イベント説明 <%= @event.description %> </p>
 <p>イベント住所 <%= @event.event_address %> </p>
@@ -8,7 +7,8 @@
 <p>イベントチーム <%= @event.event_team %> </P>
 <p>定員数 <%= @event.capacity %> <p>
 <% if current_user?(@event.user) %>
-  <%= link_to "edit", edit_event_path(@event.id) %>
-  <%= link_to "delete", @event, method: :delete,
+  <%= link_to "イベント編集", edit_event_path(@event.id) %>
+  <%= link_to "イベント削除", @event, method: :delete,
                 data: { confirm: "You sure?" } %>
 <% end %>
+<p> <%= link_to "Homeに戻る", root_path %> </p>
