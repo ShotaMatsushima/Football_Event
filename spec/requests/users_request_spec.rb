@@ -3,12 +3,10 @@ RSpec.describe "Users", type: :request do
 
   # devise_user showアクションのテスト
   describe "#new Get new_user_registration_path" do
-    before do
-      get new_user_registration_path
-    end
 
     # 正しいレスポンスが返ってくること
     it "response success" do
+      get new_user_registration_path
       expect(response).to be_successful
       expect(response).to have_http_status(200)
       expect(response).to render_template :new
@@ -18,13 +16,11 @@ RSpec.describe "Users", type: :request do
 
   # devise_user editアクションのテスト
   describe "#edit GET edit_user_registration_path" do
-    before do
-      sign_in user
-      get edit_user_registration_path(user.id)
-    end
 
     # 正しいレスポンスが返ってくること
     it "response success" do
+      sign_in user
+      get edit_user_registration_path(user.id)
       expect(response).to be_successful
       expect(response).to have_http_status(200)
       expect(response).to render_template :edit
@@ -33,13 +29,11 @@ RSpec.describe "Users", type: :request do
 
   # user showアクションのテスト
   describe "#show GET user_path" do
-    before do
+
+    # 正しいレスポンスが返ってくること
+    it "response success" do
       sign_in user
       get user_path(user.id)
-    end
-
-    it "response success" do
-      # 正しいレスポンスが返ってくること
       expect(response).to be_successful
       expect(response).to have_http_status(200)
       expect(response).to render_template :show

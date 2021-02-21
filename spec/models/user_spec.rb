@@ -1,10 +1,9 @@
-require 'rails_helper'
-
 RSpec.describe User, type: :model do
-  let(:user) { create(:user) }
+  let(:user) { build(:user) }
 
   # 有効な値を入力し有効であること
   describe "has a valid value" do
+
     # 名前が50文字の時、有効であること
     context "when name is 50" do
       it "has a valid name" do
