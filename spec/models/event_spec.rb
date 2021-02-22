@@ -32,7 +32,7 @@ RSpec.describe Event, type: :model do
   describe "has a invalid value" do
     # 名前が51文字の時、有効でないこと
     context "when event_name is 51" do
-      it "has a valid event_name" do
+      it "has a invalid event_name" do
         event.event_name = "a" * 51
         expect(event).to be_invalid
       end
@@ -40,7 +40,7 @@ RSpec.describe Event, type: :model do
 
     # 説明文が1001文字の時、有効でないこと
     context "when description is 1001" do
-      it "has a valid description" do
+      it "has a invalid description" do
         event.description = "a" * 1001
         expect(event).to be_invalid
       end
@@ -48,7 +48,7 @@ RSpec.describe Event, type: :model do
 
     # 定員数が1人の時、有効でないこと
     context "when capacity is 1" do
-      it "has a valid description" do
+      it "has a invalid description" do
         event.capacity = 1
         expect(event).to be_invalid
       end
@@ -59,7 +59,7 @@ RSpec.describe Event, type: :model do
       it "is invalid without user_id" do
         event.user_id = nil
         event.valid?
-        expect(event.errors[:user_id]).to include("can't be blank")
+        expect(event.errors[:user_id]).to include("を入力してください")
       end
     end
 
@@ -68,7 +68,7 @@ RSpec.describe Event, type: :model do
       it "is invalid without event_name" do
         event.event_name = nil
         event.valid?
-        expect(event.errors[:event_name]).to include("can't be blank")
+        expect(event.errors[:event_name]).to include("を入力してください")
       end
     end
 
@@ -77,7 +77,7 @@ RSpec.describe Event, type: :model do
       it "is invalid without description" do
         event.description = nil
         event.valid?
-        expect(event.errors[:description]).to include("can't be blank")
+        expect(event.errors[:description]).to include("を入力してください")
       end
     end
 
@@ -86,7 +86,7 @@ RSpec.describe Event, type: :model do
       it "is invalid without event_address" do
         event.event_address = nil
         event.valid?
-        expect(event.errors[:event_address]).to include("can't be blank")
+        expect(event.errors[:event_address]).to include("を入力してください")
       end
     end
 
@@ -95,7 +95,7 @@ RSpec.describe Event, type: :model do
       it "is invalid without event_at" do
         event.event_start_at = nil
         event.valid?
-        expect(event.errors[:event_start_at]).to include("can't be blank")
+        expect(event.errors[:event_start_at]).to include("を入力してください")
       end
     end
 
@@ -104,7 +104,7 @@ RSpec.describe Event, type: :model do
       it "is invalid without event_end_at" do
         event.event_end_at = nil
         event.valid?
-        expect(event.errors[:event_end_at]).to include("can't be blank")
+        expect(event.errors[:event_end_at]).to include("を入力してください")
       end
     end
 
@@ -113,7 +113,7 @@ RSpec.describe Event, type: :model do
       it "is invalid without event_team" do
         event.event_team = nil
         event.valid?
-        expect(event.errors[:event_team]).to include("can't be blank")
+        expect(event.errors[:event_team]).to include("を入力してください")
       end
     end
 
@@ -122,7 +122,7 @@ RSpec.describe Event, type: :model do
       it "is invalid without capacity" do
         event.capacity = nil
         event.valid?
-        expect(event.errors[:capacity]).to include("can't be blank")
+        expect(event.errors[:capacity]).to include("を入力してください")
       end
     end
   end

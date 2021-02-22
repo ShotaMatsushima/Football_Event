@@ -3,7 +3,6 @@ RSpec.describe "Users", type: :request do
 
   # devise_user showアクションのテスト
   describe "#new Get new_user_registration_path" do
-
     # 正しいレスポンスが返ってくること
     it "response success" do
       get new_user_registration_path
@@ -16,7 +15,6 @@ RSpec.describe "Users", type: :request do
 
   # devise_user editアクションのテスト
   describe "#edit GET edit_user_registration_path" do
-
     # 正しいレスポンスが返ってくること
     it "response success" do
       sign_in user
@@ -29,7 +27,6 @@ RSpec.describe "Users", type: :request do
 
   # user showアクションのテスト
   describe "#show GET user_path" do
-
     # 正しいレスポンスが返ってくること
     it "response success" do
       sign_in user

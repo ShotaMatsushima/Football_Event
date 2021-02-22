@@ -12,8 +12,9 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      redirect_to root_url
+      redirect_to root_url, notice: "イベントを作成しました"
     else
+      flash.now[:alert] = "イベントを作成できませんでした"
       render 'new'
     end
   end
@@ -29,7 +30,7 @@ class EventsController < ApplicationController
   def update
     @event = current_user.events.build(event_params)
     if @event.save
-      redirect_to event_url(@event.id)
+      redirect_to event_url(@event.id), notice: "イベントを編集しました"
     else
       render 'edit'
     end
@@ -37,7 +38,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to root_url
+    redirect_to root_url, notice: "イベントを削除しました"
   end
 
   private

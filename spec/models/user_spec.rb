@@ -60,7 +60,7 @@ RSpec.describe User, type: :model do
       it "is invalid without name" do
         user.name = nil
         user.valid?
-        expect(user.errors[:name]).to include("can't be blank")
+        expect(user.errors[:name]).to include("を入力してください")
       end
     end
 
@@ -69,7 +69,7 @@ RSpec.describe User, type: :model do
       it "is invalid without email" do
         user.email = nil
         user.valid?
-        expect(user.errors[:email]).to include("can't be blank")
+        expect(user.errors[:email]).to include("を入力してください")
       end
     end
 
@@ -78,7 +78,7 @@ RSpec.describe User, type: :model do
       it "is invalid without favorite_team" do
         user.favorite_team = nil
         user.valid?
-        expect(user.errors[:favorite_team]).to include("can't be blank")
+        expect(user.errors[:favorite_team]).to include("を入力してください")
       end
     end
 
@@ -87,7 +87,7 @@ RSpec.describe User, type: :model do
       it "is invalid without address" do
         user.address = nil
         user.valid?
-        expect(user.errors[:address]).to include("can't be blank")
+        expect(user.errors[:address]).to include("を入力してください")
       end
     end
 
@@ -96,7 +96,7 @@ RSpec.describe User, type: :model do
       it "is invalid without password" do
         user.password = nil
         user.valid?
-        expect(user.errors[:password]).to include("can't be blank")
+        expect(user.errors[:password]).to include("を入力してください")
       end
     end
 
@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
         create(:user, email: "shota@example.com")
         user.email = "shota@example.com"
         user.valid?
-        expect(user.errors[:email]).to include("has already been taken")
+        expect(user.errors[:email]).to include("はすでに存在します")
       end
     end
 
