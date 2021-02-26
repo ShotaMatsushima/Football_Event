@@ -31,11 +31,11 @@ RSpec.describe "Events", type: :request do
   describe "POST /create" do
     it "response success" do
       sign_in user
-      post :create, params: event_params
+      event_params.image = fixture_file_upload('app/assets/images/aiueo.png')
+      post events_path, params: { event: event_params }
 
       # 正しいレスポンスが返ってくること
-      expect(response).to be_successful
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(302)
     end
   end
 

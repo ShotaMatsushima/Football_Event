@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
+    @event.image.attach(params[:event][:image])
     if @event.save
       redirect_to root_url, notice: "イベントを作成しました"
     else
@@ -45,7 +46,7 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:event_name, :description, :event_address,
-                                    :event_start_at, :event_end_at, :event_team, :capacity)
+                                    :event_start_at, :event_end_at, :event_team, :capacity, :image)
     end
 
     def correct_user

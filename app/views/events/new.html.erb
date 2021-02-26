@@ -13,6 +13,12 @@
   </div>
 
   <div class="field">
+    <%= f.label :image, "イベント写真" %><br />
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    <%= render "alert_text" %>
+  </div>
+
+  <div class="field">
     <%= f.label :event_address, "イベント住所" %><br />
     <%= f.select :event_address, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class: 'form-control' %>
   </div>
