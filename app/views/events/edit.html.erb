@@ -13,8 +13,10 @@
   </div>
 
   <div class="field">
+    <%= image_tag @event.image.url %>
     <%= f.label :image, "イベント写真" %><br />
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    <%= f.hidden_field :image_cache %>
     <%= render "alert_text" %>
   </div>
 

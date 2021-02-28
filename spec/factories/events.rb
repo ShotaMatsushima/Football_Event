@@ -8,6 +8,7 @@ FactoryBot.define do
     event_end_at { DateTime.now.tomorrow }
     event_team { "Liverpool" }
     capacity { 5 }
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/top-hero.png')) }
   end
 
   factory :event_params, class: Event do
@@ -18,5 +19,6 @@ FactoryBot.define do
     event_end_at { DateTime.now.tomorrow }
     event_team { "Chelsea" }
     capacity { 10 }
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/top-hero.png')) }
   end
 end

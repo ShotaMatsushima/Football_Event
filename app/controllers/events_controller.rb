@@ -11,7 +11,6 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
-    @event.image.attach(params[:event][:image])
     if @event.save
       redirect_to root_url, notice: "イベントを作成しました"
     else
@@ -26,11 +25,12 @@ class EventsController < ApplicationController
 
   def edit
     @event = current_user.events.find(params[:id])
+    @event.image.cache!
   end
 
   def update
-    @event = current_user.events.build(event_params)
-    if @event.save
+    @event = current_user.events.find(params[:id])
+    if @event.update(event_params)
       redirect_to event_url(@event.id), notice: "イベントを編集しました"
     else
       render 'edit'
@@ -46,7 +46,8 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:event_name, :description, :event_address,
-                                    :event_start_at, :event_end_at, :event_team, :capacity, :image)
+                                    :event_start_at, :event_end_at, :event_team,
+                                    :capacity, :image, :image_cache)
     end
 
     def correct_user

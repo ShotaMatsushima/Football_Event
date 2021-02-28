@@ -30,7 +30,7 @@ RSpec.describe Event, type: :model do
     # アップロードファイルが許可された形式の時、有効であること
     context "when image is allowed formats" do
       it "has a valid upload file" do
-        event.image = fixture_file_upload('app/assets/images/top-hero.png')
+        event.image = fixture_file_upload('spec/fixtures/loading.gif')
         expect(event).to be_valid
       end
     end
@@ -65,7 +65,7 @@ RSpec.describe Event, type: :model do
     # アップロードファイルが許可していない時、有効でないこと
     context "when upload file is not allowed" do
       it "has a invalid upload file" do
-        event.image = fixture_file_upload('app/assets/images/erb.pdf')
+        event.image = fixture_file_upload('spec/fixtures/erd.pdf')
         expect(event).to be_invalid
       end
     end
@@ -139,6 +139,15 @@ RSpec.describe Event, type: :model do
         event.capacity = nil
         event.valid?
         expect(event.errors[:capacity]).to include("を入力してください")
+      end
+    end
+
+    # イベント定員数が存在しない場合、有効でないこと
+    context "when image is blank" do
+      it "is invalid without image" do
+        event.image = nil
+        event.valid?
+        expect(event.errors[:image]).to include("を入力してください")
       end
     end
   end

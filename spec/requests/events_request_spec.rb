@@ -31,8 +31,9 @@ RSpec.describe "Events", type: :request do
   describe "POST /create" do
     it "response success" do
       sign_in user
-      event_params.image = fixture_file_upload('app/assets/images/aiueo.png')
-      post events_path, params: { event: event_params }
+
+      # イベントのオブジェジェクトが1つ増えること
+      expect { post events_path, params: { event: event_params } }.to change(Event, :count).by(1)
 
       # 正しいレスポンスが返ってくること
       expect(response).to have_http_status(302)

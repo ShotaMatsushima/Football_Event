@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_one_attached :image
+  mount_uploader :image, ImageUploader
   validates :user_id, presence: true
   validates :event_name, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 1000 }
@@ -9,7 +9,5 @@ class Event < ApplicationRecord
   validates :event_end_at, presence: true
   validates :event_team, presence: true
   validates :capacity, presence: true, :numericality => { :greater_than_or_equal_to => 2 }
-  validates :image, presence: true, content_type: { in: %w[image/jpeg image/gif image/png],
-                                      message: "は有効なフォーマットを指定してください" },
-                                      size: { less_than: 5.megabytes,message: "は5MB以下を指定してください" }
+  validates :image, presence: true
 end
