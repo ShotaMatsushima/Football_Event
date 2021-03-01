@@ -1,0 +1,5 @@
+<% provide(:title, "Event all") %>
+<h1> <%= link_to "イベント作成", new_event_path %> </h1>
+<p> <%= link_to "マイページ", current_user %> </p>
+<%= render @events %>
+<%= paginate @events %>

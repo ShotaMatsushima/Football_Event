@@ -8,7 +8,7 @@ RSpec.describe 'Users', type: :system do
       add_value_field
       click_button 'Sign up'
       # 新規登録できたフラッシュメッセージが表示されていること
-      expect(page).to have_content "Welcome! You have signed up successfully."
+      expect(page).to have_content "アカウント登録が完了しました。"
     end
   end
 
@@ -22,19 +22,19 @@ RSpec.describe 'Users', type: :system do
     # ユーザーのプロフィール編集ができること
     scenario "be able to edit user" do
       add_value_field
-      fill_in 'Current password', with: 'password'
+      fill_in 'user[current_password]', with: 'password'
       click_button 'Update'
 
       # プロフィール編集できたフラッシュメッセージが表示されていること
-      expect(page).to have_content "Your account has been updated successfully."
+      expect(page).to have_content "アカウント情報を変更しました。"
 
       visit edit_user_registration_path
 
       # 変更した内容がフィールドにあること
       expect(page).to have_field 'Name', with: 'shotamatsushima'
-      expect(page).to have_field 'Email', with: 'shotatest@gmail.com'
-      expect(page).to have_field 'Favorite team', with: 'Southampton'
-      expect(page).to have_field 'Address', with: '三重県'
+      expect(page).to have_field 'user[email]', with: 'shotatest@gmail.com'
+      expect(page).to have_field 'user[favorite_team]', with: 'Southampton'
+      expect(page).to have_field 'user[address]', with: '三重県'
     end
   end
 end

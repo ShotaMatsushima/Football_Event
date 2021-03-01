@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
   }
-  root 'users#index'
+  root 'events#index'
   resources :users, only: [:show]
+  resources :events, only: [:new, :create, :show, :edit, :update, :destroy]
 end
