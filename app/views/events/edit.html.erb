@@ -25,6 +25,8 @@
     <%= f.select :event_address, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class: 'form-control' %>
   </div>
 
+  <%= render "google_map" %>
+
   <div class="field">
     <%= f.label :event_start_at, "イベント開始日時" %><br />
     <%= f.datetime_field :event_start_at, class: 'form-control' %>
