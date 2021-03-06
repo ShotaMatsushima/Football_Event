@@ -20,9 +20,15 @@
     <%= render "alert_text" %>
   </div>
 
+  <P>地図を検索できます<p>
+  <input id="address" type="textbox" value="">
+  <input type="button" value="検索" onclick="codeAddress()">
+  <!-- 検索値を隠しデータとして送信-->
+  <input type="hidden" name="event[address]" id="hidden_address">
+
   <div class="field">
-    <%= f.label :event_address, "イベント住所" %><br />
-    <%= f.select :event_address, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class: 'form-control' %>
+    <%= f.label :title, "イベント住所、または施設の名前を入力してください" %><br />
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
 
   <%= render "google_map" %>
