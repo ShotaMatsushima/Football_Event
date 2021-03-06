@@ -12,7 +12,7 @@ module FieldSupport
     fill_in 'event[event_name]', with: 'プレミアリーグのイベントです'
     fill_in 'event[description]', with: 'Liverpoolの試合です'
     attach_file "event[image]", "#{Rails.root}/spec/fixtures/top-hero.png"
-    select '三重県', from: 'イベント住所'
+    fill_in 'address', with: '神奈川県'
     select DateTime.now, form: 'イベント開始日時'
     select DateTime.now.tomorrow, form: 'イベント開始日時'
     select 'Southampton', from: 'イベントチーム'

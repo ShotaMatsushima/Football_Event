@@ -34,7 +34,7 @@ RSpec.describe 'Users', type: :system do
       expect(page).to have_field 'Name', with: 'shotamatsushima'
       expect(page).to have_field 'user[email]', with: 'shotatest@gmail.com'
       expect(page).to have_field 'user[favorite_team]', with: 'Southampton'
-      expect(page).to have_field 'user[address]', with: '三重県'
+      expect(page).to have_field 'user[user_address]', with: '三重県'
     end
   end
 end

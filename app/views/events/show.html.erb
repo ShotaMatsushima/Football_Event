@@ -2,7 +2,7 @@
 <p>イベント写真 <%= image_tag @event.image.url %> </p>
 <p>イベント名 <%= @event.event_name %> </p>
 <p>イベント説明 <%= @event.description %> </p>
-<p>イベント住所 <%= @event.event_address %> </p>
+<p>イベント住所 <%= @event.address %> </p>
 <%= render "google_map" %>
 <p>イベント開始日時 <%= @event.event_start_at %> </p>
 <p>イベント終了日時 <%= @event.event_end_at %> </p>

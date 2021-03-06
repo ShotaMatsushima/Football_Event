@@ -56,7 +56,6 @@ RSpec.describe "Events", type: :request do
       # 登録したユーザー情報が存在していること
       expect(response.body).to include event.event_name
       expect(response.body).to include event.description
-      expect(response.body).to include event.event_address
       expect(response.body).to include event.event_start_at.to_s
       expect(response.body).to include event.event_end_at.to_s
       expect(response.body).to include event.event_team

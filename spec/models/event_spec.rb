@@ -97,12 +97,12 @@ RSpec.describe Event, type: :model do
       end
     end
 
-    # イベントの住所が存在しない場合、有効でないこと
-    context "when event_address is blank" do
-      it "is invalid without event_address" do
-        event.event_address = nil
+    # イベントのタイトルが存在しない場合、有効でないこと
+    context "when title is blank" do
+      it "is invalid without title" do
+        event.title = nil
         event.valid?
-        expect(event.errors[:event_address]).to include("を入力してください")
+        expect(event.errors[:title]).to include("を入力してください")
       end
     end
 

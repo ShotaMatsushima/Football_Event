@@ -3,7 +3,8 @@ FactoryBot.define do
     association :user
     event_name { "サッカーを観戦しよう" }
     description { "サッカーイベントです" }
-    event_address { "東京都" }
+    address { "東京都" }
+    title { "カフェ" }
     event_start_at { DateTime.now }
     event_end_at { DateTime.now.tomorrow }
     event_team { "Liverpool" }
@@ -14,7 +15,8 @@ FactoryBot.define do
   factory :event_params, class: Event do
     event_name { "プレミアリーグを観戦しよう" }
     description { "プレミアリーグイベントです" }
-    event_address { "神奈川県" }
+    address { "神奈川県" }
+    title { "レストラン" }
     event_start_at { DateTime.now }
     event_end_at { DateTime.now.tomorrow }
     event_team { "Chelsea" }

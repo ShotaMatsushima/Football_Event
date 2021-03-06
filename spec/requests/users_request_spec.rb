@@ -42,7 +42,7 @@ RSpec.describe "Users", type: :request do
       expect(response.body).to include user.name
       expect(response.body).to include user.email
       expect(response.body).to include user.favorite_team
-      expect(response.body).to include user.address
+      expect(response.body).to include user.user_address
     end
   end
 end

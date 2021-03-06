@@ -9,6 +9,6 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   validates :favorite_team, presence: true
-  validates :address, presence: true
+  validates :user_address, presence: true
   validates :password, presence: true, length: { minimum: 6 }
 end
