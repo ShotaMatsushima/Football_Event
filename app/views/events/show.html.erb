@@ -3,7 +3,8 @@
 <p>イベント名 <%= @event.event_name %> </p>
 <p>イベント説明 <%= @event.description %> </p>
 <p>イベント住所 <%= @event.address %> </p>
-<%= render "google_map" %>
+<p>イベントのタイトル <%= @event.title %> </p>
+<%= render "google_map_view" %>
 <p>イベント開始日時 <%= @event.event_start_at %> </p>
 <p>イベント終了日時 <%= @event.event_end_at %> </p>
 <p>イベントチーム <%= @event.event_team %> </P>
