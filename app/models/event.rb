@@ -1,6 +1,10 @@
 class Event < ApplicationRecord
+  # アソシエーション
   belongs_to :user
+  has_many :participations, dependent: :destroy
+  # 画像アップロード
   mount_uploader :image, ImageUploader
+  # カラムのvalidation
   validates :user_id, presence: true
   validates :event_name, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 1000 }
