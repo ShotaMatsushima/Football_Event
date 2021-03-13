@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   # アソシエーション
   belongs_to :user
   has_many :participations, dependent: :destroy
+  has_many :likes, dependent: :destroy
   # 画像アップロード
   mount_uploader :image, ImageUploader
   # カラムのvalidation
@@ -23,5 +24,9 @@ class Event < ApplicationRecord
 
   def participated_by?(user)
     participations.where(user_id: user.id).exists?
+  end
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
   end
 end

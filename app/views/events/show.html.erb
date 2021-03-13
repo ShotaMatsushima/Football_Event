@@ -9,6 +9,7 @@
 <p>イベント終了日時 <%= @event.event_end_at %> </p>
 <p>イベントチーム <%= @event.event_team %> </P>
 <p>定員数 <%= @event.capacity %> <p>
+<%= render 'likes/like', { event: @event } %>
 <% if current_user?(@event.user) %>
   <%= link_to "イベント編集", edit_event_path(@event.id) %>
   <%= link_to "イベント削除", @event, method: :delete,
