@@ -1,10 +1,15 @@
 class Event < ApplicationRecord
   # アソシエーション
   belongs_to :user
+<<<<<<< HEAD
   has_many :participations
   has_many :likes
   has_many :comments
   has_many :notifications
+=======
+  has_many :participations, dependent: :destroy
+  has_many :likes, dependent: :destroy
+>>>>>>> 75e6add (create like button #40)
   # 画像アップロード
   mount_uploader :image, ImageUploader
   # カラムのvalidation
