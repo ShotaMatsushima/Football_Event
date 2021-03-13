@@ -20,4 +20,8 @@ class Event < ApplicationRecord
   # バリデーションの前に送信されたaddressの値によってジオコーディング(緯度経度の算出)を行う
   geocoded_by :address
   before_validation :geocode
+
+  def participated_by?(user)
+    participations.where(user_id: user.id).exists?
+  end
 end

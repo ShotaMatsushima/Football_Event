@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :events, dependent: :destroy
   has_many :participations, dependent: :destroy
+  has_many :participaton_events, through: :participations, source: :event
   # カラムのvalidation
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
