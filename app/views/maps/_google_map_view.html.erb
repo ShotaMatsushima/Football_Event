@@ -10,6 +10,7 @@
   function initMap() {
     geocoder = new google.maps.Geocoder()
 
+    // 変数の名前をmapInstanceに変更、デフォルト位置を東京に変更
     mapInstance = new google.maps.Map(document.getElementById("map"), {
       center: {
         lat: <%= event.latitude %>,
@@ -33,5 +34,5 @@
     });
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcJOKzX6zxjtQ6pIlG5eIcKAiEDMwqCU&callback=initMap" async defer>
 </script>
