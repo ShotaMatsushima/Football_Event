@@ -3,13 +3,18 @@
   <%= render "users/shared/error_messages", resource: @event %>
 
   <div class="field">
+<<<<<<< HEAD
     <%= f.label :name, "イベント名" %><br />
     <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+=======
+    <%= f.label :event_name, "イベント名" %><br />
+    <%= f.text_field :event_name, autofocus: true, class: "form-control" %>
+>>>>>>> fffb4df (fix views)
   </div>
 
   <div class="field">
     <%= f.label :description, "イベント説明" %><br />
-    <%= f.text_field :description, class: 'form-control' %>
+    <%= f.text_field :description, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -28,29 +33,29 @@
 
   <div class="field">
     <%= f.label :title, "イベント住所、または施設の名前を入力してください" %><br />
-    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <%= render "google_map_edit" %>
+  <%= render 'maps/google_map', { event: @event } %>
 
   <div class="field">
     <%= f.label :start_at, "イベント開始日時" %><br />
-    <%= f.datetime_field :start_at, class: 'form-control' %>
+    <%= f.datetime_field :start_at, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :end_at, "イベント終了日時" %><br />
-    <%= f.datetime_field :end_at, class: 'form-control' %>
+    <%= f.datetime_field :end_at, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :event_team, "イベントチーム" %><br />
-    <%= f.select :event_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class: 'form-control' %>
+    <%= f.select :event_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :capacity, "定員数" %><br />
-    <%= f.number_field :capacity, min: 2, class: 'form-control' %>
+    <%= f.number_field :capacity, min: 2, class: "form-control" %>
   </div>
   <%= f.submit "update" %>
 <% end %>
