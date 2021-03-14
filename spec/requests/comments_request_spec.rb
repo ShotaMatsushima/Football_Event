@@ -1,33 +1,16 @@
-require 'rails_helper'
-
 RSpec.describe "Comments", type: :request do
-
-  describe "GET /new" do
-    it "returns http success" do
-      get "/comments/new"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /show" do
-    it "returns http success" do
-      get "/comments/show"
-      expect(response).to have_http_status(:success)
-    end
-  end
+  let(:user) { create(:user) }
+  let(:event) { create(:event, user: user) }
 
   describe "GET /create" do
     it "returns http success" do
-      get "/comments/create"
-      expect(response).to have_http_status(:success)
+      sign_in user
+      get event_path(event.id)
+      # コメントのオブジェジェクトが1つ増えること
+      expect { post event_comments_path(event.id), params: { comment: { content: "テストです" } } }.to change(Comment, :count).by(1)
+
+      # 正しいレスポンスが返ってくること
+      expect(response).to have_http_status(302)
     end
   end
-
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/comments/destroy"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end
