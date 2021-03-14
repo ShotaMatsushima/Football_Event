@@ -10,6 +10,7 @@
 <p>イベントチーム <%= @event.event_team %> </P>
 <p>定員数 <%= @event.capacity %> <p>
 <%= render 'likes/like', { event: @event } %>
+<%= render 'comments/comment', { event: @event, comments: @comments, comment: @comment } %>
 <% if current_user?(@event.user) %>
   <%= link_to "イベント編集", edit_event_path(@event.id) %>
   <%= link_to "イベント削除", @event, method: :delete,
