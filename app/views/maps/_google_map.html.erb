@@ -14,7 +14,7 @@
     // 'event#new'アクションの時
     <% if controller.action_name == "new" %>
       // 変数の名前をmapInstanceに変更、デフォルト位置を東京に変更
-      mapInstance = new google.maps.Map(document.getElementById('map'), {
+      mapInstance = new google.maps.Map(document.getElementById("map"), {
         center: {
           lat: 35.681,
           lng: 139.767
@@ -24,35 +24,35 @@
     // 'event#edit'アクションの時
     <% else %>
       // 保存したマップとマーカーを表示
-      mapInstance = new google.maps.Map(document.getElementById('map'), {
+      mapInstance = new google.maps.Map(document.getElementById("map"), {
         center: {
-          lat: <%= @event.latitude %>,
-          lng: <%= @event.longitude %>
+          lat: <%= event.latitude %>,
+          lng: <%= event.longitude %>
         },
         zoom: 12
       });
 
       pos = new google.maps.LatLng(
-      <%= @event.latitude %>, //latitude
-      <%= @event.longitude %> //longitude
+      <%= event.latitude %>, //latitude
+      <%= event.longitude %> //longitude
       );
       default_marker = new google.maps.Marker({
       map: mapInstance,
       position: pos,
       icon: {
-      url: ' https://maps.google.com/mapfiles/ms/icons/green-dot.png', //アイコンのURL
+      url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png", //アイコンのURL
       }
       });
     <% end %>
   }
 
   function codeAddress() {
-    let inputAddress = document.getElementById('address').value;
+    let inputAddress = document.getElementById("address").value;
 
     geocoder.geocode({
-      'address': inputAddress
+      "address": inputAddress
     }, function (results, status) {
-      if (status == 'OK') {
+      if (status == "OK") {
         // map→mapInstanceに変更
         mapInstance.setCenter(results[0].geometry.location);
 
@@ -69,13 +69,13 @@
           position: results[0].geometry.location
         });
 
-        let title = document.getElementById('event_title');
+        let title = document.getElementById("event_title");
         title.setAttribute("value", inputAddress);
 
-        let hidden_address = document.getElementById('hidden_address');
+        let hidden_address = document.getElementById("hidden_address");
         hidden_address.setAttribute("value", inputAddress);
       } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+        alert("Geocode was not successful for the following reason: " + status);
       }
     });
   }

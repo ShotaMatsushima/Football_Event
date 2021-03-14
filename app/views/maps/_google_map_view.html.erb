@@ -1,5 +1,5 @@
 <div class="gmap">
-  <div id='map'>
+  <div id="map">
   </div>
 </div>
 <script>
@@ -11,24 +11,24 @@
     geocoder = new google.maps.Geocoder()
 
     // 変数の名前をmapInstanceに変更、デフォルト位置を東京に変更
-    mapInstance = new google.maps.Map(document.getElementById('map'), {
+    mapInstance = new google.maps.Map(document.getElementById("map"), {
       center: {
-        lat: <%= @event.latitude %>,
-        lng: <%= @event.longitude %>
+        lat: <%= event.latitude %>,
+        lng: <%= event.longitude %>
       },
       zoom: 12
     });
 
     // google.maps.LatLngインスタンスを生成
     pos = new google.maps.LatLng(
-    <%= @event.latitude %>, //latitude
-    <%= @event.longitude %> //longitude
+    <%= event.latitude %>, //latitude
+    <%= event.longitude %> //longitude
     );
     default_marker = new google.maps.Marker({
     map: mapInstance,
     position: pos,
     icon: {
-    url: ' https://maps.google.com/mapfiles/ms/icons/green-dot.png', //アイコンのURL
+    url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png", //アイコンのURL
     scaledSize: new google.maps.Size(40, 40) //サイズ
     }
     });
