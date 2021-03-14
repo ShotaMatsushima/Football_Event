@@ -20,12 +20,12 @@
   }
 
   function codeAddress() {
-    let inputAddress = document.getElementById('address').value;
+    let inputAddress = document.getElementById("address").value;
 
     geocoder.geocode({
-      'address': inputAddress
+      "address": inputAddress
     }, function (results, status) {
-      if (status == 'OK') {
+      if (status == "OK") {
         // map→mapInstanceに変更
         mapInstance.setCenter(results[0].geometry.location);
 
@@ -42,13 +42,13 @@
           position: results[0].geometry.location
         });
 
-        let title = document.getElementById('event_title');
+        let title = document.getElementById("event_title");
         title.setAttribute("value", inputAddress);
 
-        let hidden_address = document.getElementById('hidden_address');
+        let hidden_address = document.getElementById("hidden_address");
         hidden_address.setAttribute("value", inputAddress);
       } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+        alert("Geocode was not successful for the following reason: " + status);
       }
     });
   }
