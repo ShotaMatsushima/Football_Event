@@ -1,0 +1,17 @@
+<h2>コメント一覧</h2>
+<% comments.each do |c| %>
+  <div>
+    <%= c.user.name %></a>
+    <%= c.content %>
+    <hr>
+  </div>
+<% end %>
+<% if user_signed_in? %>
+  <%= form_for [event, comment] do |f| %>
+    <div class="field">
+      <%= f.label :content, "コメント" %><br />
+      <%= f.text_field :content, class: 'form-control' %>
+    </div>
+    <%= f.submit "コメントする" %>
+  <% end %>
+<% end %>
