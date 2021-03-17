@@ -11,18 +11,6 @@
   function initMap() {
     geocoder = new google.maps.Geocoder()
 
-    // 'event#new'アクションの時
-    <% if controller.action_name == "new" %>
-      // 変数の名前をmapInstanceに変更、デフォルト位置を東京に変更
-      mapInstance = new google.maps.Map(document.getElementById('map'), {
-        center: {
-          lat: 35.681,
-          lng: 139.767
-        },
-        zoom: 12
-      });
-    // 'event#edit'アクションの時
-    <% else %>
       // 保存したマップとマーカーを表示
       mapInstance = new google.maps.Map(document.getElementById('map'), {
         center: {
@@ -43,7 +31,6 @@
       url: ' https://maps.google.com/mapfiles/ms/icons/green-dot.png', //アイコンのURL
       }
       });
-    <% end %>
   }
 
   function codeAddress() {
