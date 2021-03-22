@@ -26,6 +26,7 @@ group :development, :test do
   gem 'simplecov', require: false
   gem "rspec_junit_formatter"
   gem 'capybara', '~> 2.15.2'
+  gem 'webdrivers'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'spring-commands-rspec'

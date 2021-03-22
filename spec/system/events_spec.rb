@@ -4,7 +4,7 @@ RSpec.describe 'Events', type: :system do
 
   # イベント作成のシステムテスト
   describe "new event page" do
-    scenario "be able to create new event" do
+    scenario "be able to create new event", js: true do
       sign_in user
       visit new_event_path
       add_event_value_field
@@ -17,13 +17,8 @@ RSpec.describe 'Events', type: :system do
 
   # イベント編集ページのシステムテスト
   describe "event edit page" do
-    before do
-      sign_in user
-      visit edit_event_path(event.id)
-    end
-
     # イベントの編集ができること
-    scenario "be able to edit event" do
+    scenario "be able to edit event", js: true do
       sign_in user
       visit edit_event_path(event.id)
       add_event_value_field

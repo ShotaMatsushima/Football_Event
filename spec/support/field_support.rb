@@ -9,12 +9,12 @@ module FieldSupport
   end
 
   def add_event_value_field
-    fill_in 'event[event_name]', with: 'プレミアリーグのイベントです'
+    fill_in 'event[name]', with: 'プレミアリーグのイベントです'
     fill_in 'event[description]', with: 'Liverpoolの試合です'
-    attach_file "event[image]", "/spec/fixtures/top-hero.png"
+    attach_file "event[image]", "#{Rails.root}/spec/fixtures/top-hero.png"
     fill_in 'address', with: '神奈川県'
-    select DateTime.now, form: 'イベント開始日時'
-    select DateTime.now.tomorrow, form: 'イベント開始日時'
+    fill_in 'event[start_at]', with: '05/23/002021/17:15'
+    fill_in 'event[end_at]', with: '05/30/002021/17:15'
     select 'Southampton', from: 'イベントチーム'
     fill_in 'event[capacity]', with: 5
   end
