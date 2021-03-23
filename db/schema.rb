@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_042008) do
+ActiveRecord::Schema.define(version: 2021_03_23_090911) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -23,16 +23,16 @@ ActiveRecord::Schema.define(version: 2021_03_13_042008) do
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "event_name", default: "", null: false
+    t.string "name", default: "", null: false
     t.text "description", null: false
     t.string "address", default: "", null: false
-    t.datetime "event_start_at"
+    t.datetime "start_at"
     t.string "event_team", default: "", null: false
     t.integer "capacity"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "event_end_at"
+    t.datetime "end_at"
     t.string "image"
     t.float "latitude", null: false
     t.float "longitude", null: false
@@ -48,6 +48,21 @@ ActiveRecord::Schema.define(version: 2021_03_13_042008) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_likes_on_event_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "visiter_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "event_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["event_id"], name: "index_notifications_on_event_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visiter_id"], name: "index_notifications_on_visiter_id"
   end
 
   create_table "participations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
