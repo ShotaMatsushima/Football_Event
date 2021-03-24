@@ -32,7 +32,6 @@ class Event < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
 
-<<<<<<< HEAD
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visiter_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
@@ -49,15 +48,6 @@ class Event < ApplicationRecord
       end
       notification.save if notification.valid?
     end
-=======
-  def create_notification_by(current_user)
-    notification = current_user.active_notifications.new(
-      event_id: id,
-      visited_id: user_id,
-      action: "like"
-    )
-    notification.save if notification.valid?
->>>>>>> 037b525 (create Notification model #45)
   end
 
   def create_notification_comment!(current_user, comment_id)
