@@ -66,7 +66,6 @@ class Event < ApplicationRecord
       event_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
-<<<<<<< HEAD
       action: 2
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
@@ -86,13 +85,6 @@ class Event < ApplicationRecord
         visited_id: user_id,
         action: 0
       )
-=======
-      action: 'comment'
-    )
-    # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visiter_id == notification.visited_id
-      notification.checked = true
->>>>>>> 037b525 (create Notification model #45)
     end
     notification.save if notification.valid?
   end
