@@ -3,7 +3,9 @@ class CommentsController < ApplicationController
     @event = Event.find(params[:event_id])
     @comment = @event.comments.build(comment_params)
     @comment.user_id = current_user.id
+    @comment_event = @comment.event
     if @comment.save
+      @comment_event.create_notification_comment!(current_user, @comment.id)
       redirect_to event_path(@comment.event.id), notice: "コメントしました"
     else
       @event = Event.find(params[:event_id])

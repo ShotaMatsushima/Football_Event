@@ -9,4 +9,9 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
     resource :comments, only: [:create]
   end
+  resources :notifications, only: [:index] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 end
