@@ -1,5 +1,5 @@
 <%= render "likes/like", { event: event } %>
-<%= link_to event.event_name, event %>
+<%= link_to event.name, event %>
 <%= image_tag event.image.url %>
-<p><%= event.event_start_at %></p>
+<p><%= event.start_at %></p>
 <p><%= event.created_at %></p>

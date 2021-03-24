@@ -3,6 +3,9 @@ class LikesController < ApplicationController
     like = current_user.likes.build(event_id: params[:event_id])
     like.save
     redirect_to event_path(like.event.id)
+    event = Event.find(params[:event_id])
+    event.create_notification_like!(current_user)
+    redirect_to event_path(like.event.id)
   end
 
   def destroy
