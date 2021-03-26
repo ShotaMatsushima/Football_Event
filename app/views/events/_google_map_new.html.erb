@@ -1,0 +1,57 @@
+<div class="gmap">
+  <div id='map'>
+  </div>
+</div>
+
+<script>
+  let map
+  let geocoder
+  let marker
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+    COODINATE_TOKYO = { lat: 35.681, lng: 139.767 }
+
+      // 変数の名前をmapInstanceに変更、デフォルト位置を東京に変更
+      mapInstance = new google.maps.Map(document.getElementById('map'), {
+        center: COODINATE_TOKYO,
+        zoom: 12
+      });
+  }
+
+  function codeAddress() {
+    let inputAddress = document.getElementById('address').value;
+
+    geocoder.geocode({
+      'address': inputAddress
+    }, function (results, status) {
+      if (status == 'OK') {
+        // map→mapInstanceに変更
+        mapInstance.setCenter(results[0].geometry.location);
+
+        // 既存の検索マーカーを削除
+        if(marker != null){
+        marker.setMap(null);
+        }
+        marker = null;
+
+        // var marker → markerへ変更
+        marker = new google.maps.Marker({
+          //map→mapInstanceに変更
+          map: mapInstance,
+          position: results[0].geometry.location
+        });
+
+        let title = document.getElementById('event_title');
+        title.setAttribute("value", inputAddress);
+
+        let hidden_address = document.getElementById('hidden_address');
+        hidden_address.setAttribute("value", inputAddress);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer>
+</script>

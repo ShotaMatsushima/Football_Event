@@ -5,6 +5,8 @@ ruby '2.5.3'
 gem 'devise'
 gem 'kaminari'
 gem 'rails', '~> 5.2.1'
+gem 'dotenv-rails'
+gem 'geocoder'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
@@ -15,7 +17,6 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -25,6 +26,7 @@ group :development, :test do
   gem 'simplecov', require: false
   gem "rspec_junit_formatter"
   gem 'capybara', '~> 2.15.2'
+  gem 'webdrivers'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'spring-commands-rspec'

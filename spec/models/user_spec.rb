@@ -3,7 +3,6 @@ RSpec.describe User, type: :model do
 
   # 有効な値を入力し有効であること
   describe "has a valid value" do
-
     # 名前が50文字の時、有効であること
     context "when name is 50" do
       it "has a valid name" do
@@ -83,11 +82,11 @@ RSpec.describe User, type: :model do
     end
 
     # 住所が存在しない場合、有効でないこと
-    context "when address is blank" do
-      it "is invalid without address" do
-        user.address = nil
+    context "when user_address is blank" do
+      it "is invalid without user_address" do
+        user.user_address = nil
         user.valid?
-        expect(user.errors[:address]).to include("を入力してください")
+        expect(user.errors[:user_address]).to include("を入力してください")
       end
     end
 

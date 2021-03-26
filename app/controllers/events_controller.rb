@@ -45,9 +45,9 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:event_name, :description, :event_address,
-                                    :event_start_at, :event_end_at, :event_team,
-                                    :capacity, :image, :image_cache)
+      params.require(:event).permit(:name, :description, :address,
+                                    :start_at, :end_at, :event_team,
+                                    :capacity, :image, :image_cache, :latitude, :longitude, :title)
     end
 
     def correct_user

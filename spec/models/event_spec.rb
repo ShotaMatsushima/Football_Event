@@ -4,9 +4,9 @@ RSpec.describe Event, type: :model do
   # 有効な値を入力し有効であること
   describe "has a valid value" do
     # イベント名が50文字の時、有効であること
-    context "when event_name is 50" do
-      it "has a valid event_name" do
-        event.event_name = "a" * 50
+    context "when name is 50" do
+      it "has a valid name" do
+        event.name = "a" * 50
         expect(event).to be_valid
       end
     end
@@ -39,9 +39,9 @@ RSpec.describe Event, type: :model do
   # 有効でない値を入力し有効でないこと
   describe "has a invalid value" do
     # 名前が51文字の時、有効でないこと
-    context "when event_name is 51" do
-      it "has a invalid event_name" do
-        event.event_name = "a" * 51
+    context "when name is 51" do
+      it "has a invalid name" do
+        event.name = "a" * 51
         expect(event).to be_invalid
       end
     end
@@ -80,11 +80,11 @@ RSpec.describe Event, type: :model do
     end
 
     # イベント名が存在しない場合、有効でないこと
-    context "when event_name is blank" do
-      it "is invalid without event_name" do
-        event.event_name = nil
+    context "when name is blank" do
+      it "is invalid without name" do
+        event.name = nil
         event.valid?
-        expect(event.errors[:event_name]).to include("を入力してください")
+        expect(event.errors[:name]).to include("を入力してください")
       end
     end
 
@@ -97,30 +97,30 @@ RSpec.describe Event, type: :model do
       end
     end
 
-    # イベントの住所が存在しない場合、有効でないこと
-    context "when event_address is blank" do
-      it "is invalid without event_address" do
-        event.event_address = nil
+    # イベントのタイトルが存在しない場合、有効でないこと
+    context "when title is blank" do
+      it "is invalid without title" do
+        event.title = nil
         event.valid?
-        expect(event.errors[:event_address]).to include("を入力してください")
+        expect(event.errors[:title]).to include("を入力してください")
       end
     end
 
     # イベント開始日時が存在しない場合、有効でないこと
-    context "when event_start_at is blank" do
-      it "is invalid without event_at" do
-        event.event_start_at = nil
+    context "when start_at is blank" do
+      it "is invalid without start_at" do
+        event.start_at = nil
         event.valid?
-        expect(event.errors[:event_start_at]).to include("を入力してください")
+        expect(event.errors[:start_at]).to include("を入力してください")
       end
     end
 
     # イベント終了日時が存在しない場合、有効でないこと
-    context "when event_end_at is blank" do
-      it "is invalid without event_end_at" do
-        event.event_end_at = nil
+    context "when end_at is blank" do
+      it "is invalid without end_at" do
+        event.end_at = nil
         event.valid?
-        expect(event.errors[:event_end_at]).to include("を入力してください")
+        expect(event.errors[:end_at]).to include("を入力してください")
       end
     end
 

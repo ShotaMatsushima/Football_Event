@@ -7,5 +7,6 @@ RSpec.configure do |config|
     }
     Capybara.server_host = 'web'
     Capybara.app_host = 'http://web'
+    Capybara.javascript_driver = :selenium_chrome
   end
 end
