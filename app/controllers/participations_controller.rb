@@ -2,6 +2,8 @@ class ParticipationsController < ApplicationController
   def create
     participation = current_user.participations.build(event_id: params[:event_id])
     participation.save
+    participations = Event.find(params[:event_id])
+    participations.create_notification_participation!(current_user)
     redirect_to event_path(participation.event.id), notice: "イベントに参加しました"
   end
 
