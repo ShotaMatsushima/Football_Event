@@ -88,4 +88,17 @@ class Event < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
+  def create_notification_participation!(current_user)
+    # すでに参加しているか検索
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'participation'])
+    # 参加していない場合のみ、通知レコードを作成
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        event_id: id,
+        visited_id: user_id,
+        action: 'participation'
+      )
+    end
+  end
 end
