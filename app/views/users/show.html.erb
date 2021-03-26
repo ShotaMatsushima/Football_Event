@@ -4,7 +4,7 @@
 <p>お気に入りチーム <%= @user.favorite_team %></p>
 <p>住所 <%= @user.user_address %></p>
 <% @participaton_events.each do |event| %>
-  <p><span>イベント名</span><%= link_to event.event_name, event_path(event.id) %></p>
+  <p><span>イベント名</span><%= link_to event.name, event_path(event.id) %></p>
 <% end %>
 <% if current_user %>
   <h1> <%= link_to "イベント作成", new_event_path %> </h1>
