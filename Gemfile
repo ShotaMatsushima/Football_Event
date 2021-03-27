@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 gem 'devise'
 gem 'kaminari'
+gem 'ransack'
 gem 'rails', '~> 5.2.1'
 gem 'dotenv-rails'
 gem 'geocoder'
