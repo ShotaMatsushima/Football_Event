@@ -1,4 +1,6 @@
-<%= render "likes/like", { event: event } %>
+<div id="likes_buttons_<%= event.id %>">
+  <%= render 'likes/like', { event: event} %>
+</div>
 <%= link_to event.name, event %>
 <%= image_tag event.image.url %>
 <p><%= event.start_at %></p>
