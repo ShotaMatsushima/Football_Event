@@ -1,11 +1,11 @@
 <% if event.liked_by?(current_user) %>
-  <%= link_to event_likes_path(event.id), method: :delete do %>
+  <%= link_to event_likes_path(event.id), method: :delete, remote: true do %>
     <i class="fas fa-heart unlike-btn"></i>
-    <%= event.likes.count%>
   <% end %>
+  <%= event.likes.count %>
 <% else %>
-  <%= link_to event_likes_path(event.id), method: :post do %>
+  <%= link_to event_likes_path(event.id), method: :post, remote: true do %>
     <i class="far fa-heart like-btn"></i>
-    <%= event.likes.count%>
   <% end %>
+  <%= event.likes.count %>
 <% end %>
