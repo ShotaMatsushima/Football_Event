@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
     resource :participations, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
-    resource :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
   resources :notifications, only: [:index] do
     collection do
