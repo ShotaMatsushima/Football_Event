@@ -1,6 +1,10 @@
 class Event < ApplicationRecord
+  # アソシエーション
   belongs_to :user
+  has_many :participations
+  # 画像アップロード
   mount_uploader :image, ImageUploader
+  # カラムのvalidation
   validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 1000 }
@@ -16,4 +20,8 @@ class Event < ApplicationRecord
   # バリデーションの前に送信されたaddressの値によってジオコーディング(緯度経度の算出)を行う
   geocoded_by :address
   before_validation :geocode
+
+  def participated_by?(user)
+    participations.where(user_id: user.id).exists?
+  end
 end

@@ -13,5 +13,7 @@
   <%= link_to "イベント編集", edit_event_path(@event.id) %>
   <%= link_to "イベント削除", @event, method: :delete,
                 data: { confirm: "You sure?" } %>
+<% else %>
+  <%= render 'participaton_event_form' %>
 <% end %>
 <p> <%= link_to "Homeに戻る", root_path %> </p>
