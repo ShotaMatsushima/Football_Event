@@ -18,7 +18,7 @@ rerun.txt
 pickle-email-*.html
 
 # assets
-*.cofee
+*.coffee
 app/assets/stylesheets/participations.scss
 
 # Ignore all logfiles and tempfiles.
