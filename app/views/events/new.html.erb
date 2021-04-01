@@ -3,13 +3,8 @@
   <%= render "users/shared/error_messages", resource: @event %>
 
   <div class="field">
-<<<<<<< HEAD
     <%= f.label :name, "イベント名" %><br />
     <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-=======
-    <%= f.label :event_name, "イベント名" %><br />
-    <%= f.text_field :event_name, autofocus: true, class: "form-control" %>
->>>>>>> fffb4df (fix views)
   </div>
 
   <div class="field">
@@ -34,7 +29,7 @@
     <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <%= render "maps/google_map", { event: @event } %>
+  <%= render "maps/google_map_new", { event: @event } %>
 
   <div class="field">
     <%= f.label :start_at, "イベント開始日時" %><br />

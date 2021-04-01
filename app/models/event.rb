@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :participations
   has_many :likes
+  has_many :comments
   # 画像アップロード
   mount_uploader :image, ImageUploader
   # カラムのvalidation
