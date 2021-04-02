@@ -1,4 +1,5 @@
 <h2>コメント一覧</h2>
+<%= render "users/shared/error_messages", resource: @comment %>
 <% comments.each do |c| %>
   <div>
     <%= c.user.name %></a>

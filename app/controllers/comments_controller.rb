@@ -1,12 +1,15 @@
 class CommentsController < ApplicationController
   def create
-    event = Event.find(params[:event_id])
-    @comment = event.comments.build(comment_params)
+    @event = Event.find(params[:event_id])
+    @comment = @event.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       redirect_to event_path(@comment.event.id), notice: "コメントしました"
     else
-      redirect_to event_path(@comment.event.id), alert: "コメントできませんでした"
+      @event = Event.find(params[:event_id])
+      @comments = @event.comments
+      flash.now[:alert] = "コメントできませんでした"
+      render "events/show"
     end
   end
 
