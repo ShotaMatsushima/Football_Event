@@ -3,7 +3,7 @@ module NotificationsHelper
     @visiter = notification.visiter
     @comment = nil
     @visiter_comment = notification.comment_id
-    # notification.actionがlikeかcommentか
+    # notification.actionがlikeかcommentかparticipation
     case notification.action
       when "participation" then
         tag.a(notification.visiter.name, href:user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたのイベント', href:event_path(notification.event_id), style:"font-weight: bold;")+"に参加しました"

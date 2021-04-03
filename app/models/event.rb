@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   has_many :participations
   has_many :likes
   has_many :comments
+  has_many :notifications
   # 画像アップロード
   mount_uploader :image, ImageUploader
   # カラムのvalidation
@@ -85,5 +86,6 @@ class Event < ApplicationRecord
         action: 'participation'
       )
     end
+    notification.save if notification.valid?
   end
 end
