@@ -1,24 +1,32 @@
 version: '3'
 services:
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: root
-    ports:
-      - "3306:3306"
-  web:
+  #db:
+    #image: mysql:5.7
+    #environment:
+      #MYSQL_ROOT_PASSWORD: password
+      #MYSQL_DATABASE: root
+    #ports:
+      #- "3306:3306"
+  app:
     build: .
-    command: rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec puma -C config/puma.rb -e production
     volumes:
-      - .:/app_name
+      - .:/myapp
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+      - log-data:/myapp/log
+
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
     ports:
-      - "3000:3000"
-    links:
-      - db
-    environment:
-      - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
-  selenium_chrome:
-    image: selenium/standalone-chrome-debug
-    logging:
-      driver: none
+      - 80:80
+
+volumes:
+  # mysql-data:
+  public-data:
+  tmp-data:
+  log-data:
