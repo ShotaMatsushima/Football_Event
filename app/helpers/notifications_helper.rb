@@ -5,11 +5,11 @@ module NotificationsHelper
     @visiter_comment = notification.comment_id
     # notification.actionがlikeかcommentかparticipation
     case notification.action
-      when "participation" then
+      when NOTIFICATION_ACTION[:participation]
         tag.a(notification.visiter.name, href:user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたのイベント', href:event_path(notification.event_id), style:"font-weight: bold;")+"に参加しました"
-      when "like" then
+      when NOTIFICATION_ACTION[:like]
         tag.a(notification.visiter.name, href:user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたのイベント', href:event_path(notification.event_id), style:"font-weight: bold;")+"にいいねしました"
-      when "comment" then
+      when NOTIFICATION_ACTION[:comment]
         @comment = Comment.find_by(id: @visiter_comment)&.content
         tag.a(@visiter.name, href:user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたのイベント', href:event_path(notification.event_id), style:"font-weight: bold;")+"にコメントしました"
     end

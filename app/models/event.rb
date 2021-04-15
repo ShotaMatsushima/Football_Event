@@ -40,11 +40,11 @@ class Event < ApplicationRecord
       notification = current_user.active_notifications.new(
         event_id: id,
         visited_id: user_id,
-        action: 'like'
+        action: 1
       )
       # 自分の投稿に対するいいねの場合は、通知済みとする
       if notification.visiter_id == notification.visited_id
-        notification.checked = true
+        return
       end
       notification.save if notification.valid?
     end
@@ -66,11 +66,11 @@ class Event < ApplicationRecord
       event_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
-      action: 'comment'
+      action: 2
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     if notification.visiter_id == notification.visited_id
-      notification.checked = true
+      return
     end
     notification.save if notification.valid?
   end
@@ -83,7 +83,7 @@ class Event < ApplicationRecord
       notification = current_user.active_notifications.new(
         event_id: id,
         visited_id: user_id,
-        action: 'participation'
+        action: 0
       )
     end
     notification.save if notification.valid?
