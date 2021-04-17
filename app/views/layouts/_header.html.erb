@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to "FOOTBALL EVENT", root_path, class: "navbar-brand" %>
+    <div class="nav-item">
+      <%=button_to "イベント作成", new_event_path, class: "nav-button" %>
+    </div>
+    <div class="nav navbar-nav navbar-right">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%=link_to user_session_path, class: "nav-link" do %>
+              <i class="far fa-bell fa-2x"></i>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%=link_to "ログイン・新規登録", user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-user-circle fa-2x"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <% if user_signed_in? %>
+              <%=link_to current_user.name, current_user, class: "dropdown-item" %>
+              <%=link_to "プロフィール編集", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: "You sure?" } %>
+            <% else %>
+              <%=link_to "ログイン・新規登録", user_session_path, class: "dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

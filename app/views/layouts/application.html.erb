@@ -6,12 +6,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    "application", media: "all" %>
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <%= render "layouts/shim" %>
   </head>
 
   <body>
-    <%= render "layouts/notifications" %>
+  <%= render "layouts/header" %>
+  <%= render "layouts/notifications" %>
+  <div class="container">
     <%= yield %>
+  </div>
+  <%= render "layouts/footer" %>
   </body>
 </html>

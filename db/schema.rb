@@ -23,16 +23,16 @@ ActiveRecord::Schema.define(version: 2021_04_17_003544) do
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "event_name", default: "", null: false
     t.text "description", null: false
     t.string "address", default: "", null: false
-    t.datetime "start_at"
+    t.datetime "event_start_at"
     t.string "event_team", default: "", null: false
     t.integer "capacity"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "end_at"
+    t.datetime "event_end_at"
     t.string "image"
     t.float "latitude", null: false
     t.float "longitude", null: false
