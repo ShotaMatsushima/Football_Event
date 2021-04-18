@@ -1,45 +1,62 @@
 <% provide(:title, "Sign up") %>
-<h2>SignTEST</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+<%= render "users/shared/error_messages", resource: resource %>
+<div class="card bg-white border-none">
+  <div class="card-header font-weight-bold">
+    新規登録
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+  <div class="card-body p-4">
+    <p>以下の項目を全て入力して「新規登録する」ボタンをクリックしてください。</p>
+    <p>すでに会員登録をしている方は、<%= link_to "こちらからログインできます。", user_session_path %></p>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <table border="1">
+        <tr>
+          <td>名前</td>
+          <td>
+            <div class="field">
+              <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Eメール</td>
+          <td>
+            <p>半角英数字</p>
+            <%= f.email_field :email, autocomplete: "email" %>
+          </td>
+        </tr>
+        <tr>
+          <td>都道府県</td>
+          <td>
+            <%= f.select :user_address, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class:"form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <td>お気に入りチーム</td>
+          <td>
+            <%= f.select :favorite_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class:"form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <td>パスワード</td>
+          <td>
+            <p>半角英数字で6文字以上</p>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </td>
+        </tr>
+        <tr>
+          <td>パスワード (確認)</td>
+          <td>
+            <p>半角英数字で6文字以上</p>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </td>
+        </tr>
+      </table>
+      <div class="actions">
+        <button type="submit" class="card-button btn btn-danger btn-lg">新規登録する</button>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :favorite_team %><br />
-    <%= f.select :favorite_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class:"form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_address %><br />
-    <%= f.select :user_address, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class:"form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

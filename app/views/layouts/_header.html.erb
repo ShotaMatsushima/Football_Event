@@ -28,7 +28,7 @@
             <% if user_signed_in? %>
               <%=link_to current_user.name, current_user, class: "dropdown-item" %>
               <%=link_to "プロフィール編集", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: "You sure?" } %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: "You sure?" } %>
             <% else %>
               <%=link_to "ログイン・新規登録", user_session_path, class: "dropdown-item" %>
             <% end %>
