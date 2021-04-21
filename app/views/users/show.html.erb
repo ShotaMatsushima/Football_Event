@@ -1,14 +1,15 @@
 <% provide(:title, @user.name) %>
-<p>名前 <%= @user.name %></p>
-<p>Eメール <%= @user.email %></p>
-<p>お気に入りチーム <%= @user.favorite_team %></p>
-<p>住所 <%= @user.user_address %></p>
-<% @participaton_events.each do |event| %>
-  <p><span>イベント名</span><%= link_to event.name, event_path(event.id) %></p>
-<% end %>
-<% if current_user %>
-  <h1> <%= link_to "イベント作成", new_event_path %> </h1>
-  <p> <%= link_to "プロフィール編集", edit_user_registration_path %> </p>
-  <p> <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, data: { confirm: "You sure?" } %> </p>
-<% end %>
-<p> <%= link_to "Homeに戻る", root_path %> </p>
+<div class="tab-wrap">
+  <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">プロフィール</label>
+  <div class="tab-content">
+    <%= render "tab1", { user: @user } %>
+  </div>
+  <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">イベント参加履歴</label>
+  <div class="tab-content">
+    <%= render "tab2", { participaton_events: @participaton_events, user: @user } %>
+  </div>
+  <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">イベント作成履歴</label>
+  <div class="tab-content">
+    <%= render "tab3", { user_events: @user_events } %>
+  </div>
+</div>

@@ -51,10 +51,7 @@ body {
 }
 
 .nav-button {
-  background-color: red;
-  font-size: 20px;
-  color: white;
-  padding: 0 15px;
+  margin: 10px 0;
 }
 
 .nav-link {
@@ -123,6 +120,52 @@ table tr:last-child td:last-child {
 
 .card {
   margin-top: 20px;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,0.125);
+  border-radius: 0.25rem;
+}
+
+.card-body {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+.card-header:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,0.03);
+  border-bottom: 1px solid rgba(0,0,0,0.125);
+}
+
+.pr-5, .px-5 {
+  padding-right: 3rem !important;
+}
+
+.pl-5, .px-5 {
+  padding-left: 3rem !important;
+}
+
+.form-control {
+margin: 0 auto;
+  width: 70%;
 }
 
 .actions {
@@ -134,5 +177,134 @@ table tr:last-child td:last-child {
 }
 
 .remember {
+  text-align: center;
+}
+
+.tab-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin:20px 0;
+}
+
+.tab-wrap:after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  display: block;
+  order: -1;
+}
+
+.tab-label {
+  color: White;
+  background: LightGray;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px .5em;
+  order: -1;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  flex: 1;
+}
+
+.tab-label:not(:last-of-type) {
+  margin-right: 5px;
+}
+
+.tab-content {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* アクティブなタブ */
+.tab-switch:checked+.tab-label {
+  background: red;
+}
+
+.tab-switch:checked+.tab-label+.tab-content {
+  height: auto;
+  overflow: auto;
+  padding: 15px;
+  opacity: 1;
+  transition: .5s opacity;
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+
+/* ラジオボタン非表示 */
+.tab-switch {
+  display: none;
+}
+
+.reviews {
+  display: -webkit-box;
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 0 1.5px #999;
+}
+
+.item2 {
+  display: flex;
+  flex-flow: column;
+  justify-content:space-between;
+  margin-left: 15px;
+}
+
+.item3 {
+  margin-left:auto;
+  text-align: right;
+  display: flex;
+  flex-flow: column;
+  justify-content:space-between;
+}
+
+.item1 {
+  text-align: center;
+  color: white;
+}
+
+.event-end {
+  background-color: #aaa;
+}
+
+.event-date {
+  background-color:crimson;
+}
+
+.event-start {
+  background-color:#F0B55E;
+}
+
+.event-content-left a {
+  color: black;
+}
+
+.fa-user {
+  margin-right: 5px;
+}
+
+.event-delete {
+  margin: 10px 0;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;     /*背景の色を変える*/
+}
+
+.paginate {
   text-align: center;
 }

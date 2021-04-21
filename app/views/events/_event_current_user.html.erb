@@ -1,0 +1,46 @@
+<div class="reviews">
+  <div class="flexitem item1">
+    <%= image_tag event.image.url %>
+    <% if event.event_start_at.strftime('%m/%d') < Date.today.strftime('%m/%d') %>
+      <div class="event-end">
+        終了
+      </div>
+    <% elsif event.event_start_at.strftime('%m/%d') == Date.today.strftime('%m/%d') %>
+      <div class="event-date">
+        開催中
+      </div>
+    <% else %>
+      <div class="event-start">
+        開催前
+      </div>
+    <% end %>
+  </div>
+  <div class="flexitem item2">
+    <div class="event-content-left">
+      <h3>イベント開催日:<%= event.event_start_at.strftime('%Y/%m/%d') %></h3>
+      <%= link_to event_path(event.id) do %>
+        <%= event.event_name%>
+      <% end %>
+    </div>
+    <div class="left-bottom">
+      <span class="fas fa-user">
+        <%= link_to event.user.name, user_path(event.user.id) %>
+      </span>
+      <span class="fas fa-futbol">
+        <%= event.event_team %>
+      </span>
+    </div>
+  </div>
+  <div class="flexitem item3">
+    <p>作成日:<%= event.created_at.strftime('%Y/%m/%d') %></p>
+    <div class="event-content-rigth">
+      <div>
+        <%= link_to "イベント編集", edit_event_path(event.id), class: "event-edit btn btn-primary" %>
+      </div>
+      <div>
+        <%= link_to "イベント削除", event_path(event.id), class: "event-delete btn btn-danger", method: :delete, data: { confirm: "You sure?" } %>
+      </div>
+      定員数:<%= event.participations.count %>/<%= event.capacity %>
+    </div>
+  </div>
+</div>
