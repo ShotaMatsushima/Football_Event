@@ -308,3 +308,17 @@ margin: 0 auto;
 .paginate {
   text-align: center;
 }
+
+.fa-circle {
+  position: relative; /* 今の位置を基準 */
+  bottom: 12px; /* 上から10px */
+  right: 10px; /* 左から20px */
+}
+
+.pagenate {
+  text-align: center;
+}
+
+.search-card {
+  margin-bottom: 20px;
+}

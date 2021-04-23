@@ -5,14 +5,17 @@
     </button>
     <%= link_to "FOOTBALL EVENT", root_path, class: "navbar-brand" %>
     <div class="nav-item">
-      <%=button_to "イベント作成", new_event_path, class: "nav-button btn btn-danger btn-lg" %>
+      <%= link_to "イベント作成", new_event_path, class: "nav-button btn btn-danger btn-lg" %>
     </div>
     <div class="nav navbar-nav navbar-right">
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%=link_to user_session_path, class: "nav-link" do %>
+            <%= link_to notifications_path, class: "nav-link" do %>
               <i class="far fa-bell fa-2x"></i>
+              <% if unchecked_notifications.any? %>
+                <i class="fa fa-circle" style="color: red;"></i>
+              <% end %>
             <% end %>
           </li>
         <% else %>
