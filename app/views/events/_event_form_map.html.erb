@@ -1,0 +1,17 @@
+<div class="card-body p-4">
+  <div class="form-group">
+    <label>イベント会場の住所</label>
+    <input class="form-control" id="address" type="text" value=<%= current_user.user_address %>>
+    <input class="btn btn-primary mt-2" type="button" value="検索" onclick="codeAddress()">
+    ※検索ボタンを押すと入力した住所が地図に反映されます
+    <!-- 検索値を隠しデータとして送信-->
+    <input type="hidden" name="event[address]" id="hidden_address">
+    <div class="field mb-10 mt-5">
+      <%= f.label :title, "施設の名前を入力してください" %><br />
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="map mt-10">
+      <%= render "maps/google_map", { event: event } %>
+    </div>
+  </div>
+</div>

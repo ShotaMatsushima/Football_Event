@@ -1,0 +1,33 @@
+<div class="card-body p-4">
+  <div class="form-group px-5">
+    <div class="field mb-5">
+      <%= f.label :image, "イベント写真" %><br />
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+      <%= render "alert_text" %>
+    </div>
+      <div class="field mb-5">
+        <%= f.label :event_name, "イベント名" %><br />
+        <%= f.text_field :event_name, autofocus: true, class: "form-control" %>
+      </div>
+    <div class="field mb-5 h-50">
+      <%= f.label :description, "イベント説明" %><br />
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+    <div class="field mb-5">
+      <%= f.label :event_team, "イベントチーム" %><br />
+      <%= f.select :event_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class: "form-control" %>
+    </div>
+    <div class="field mb-5">
+      <%= f.label :event_start_at, "イベント開始日時" %><br />
+      <%= f.datetime_select :event_start_at, class: "form-control" %>
+    </div>
+    <div class="field mb-5">
+      <%= f.label :event_end_at, "イベント終了日時" %><br />
+      <%= f.datetime_select :event_end_at, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :capacity, "定員数" %><br />
+      <%= f.number_field :capacity, min: 2 %>
+    </div>
+  </div>
+</div>

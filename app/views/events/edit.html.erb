@@ -1,57 +1,19 @@
-<% provide(:title, "#{ @event.name } edit") %>
+<% provide(:title, "#{ @event.event_name } edit") %>
+<%= render "users/shared/error_messages", resource: @event %>
 <%= form_with(model: @event, local: true) do |f| %>
-  <%= render "users/shared/error_messages", resource: @event %>
-
-  <div class="field">
-    <%= f.label :name, "イベント名" %><br />
-    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  <div class="card bg-white border-none">
+    <div class="card-header font-weight-bold">
+      イベント詳細の編集
+    </div>
+    <%= render "event_form", {f: f} %>
   </div>
-
-  <div class="field">
-    <%= f.label :description, "イベント説明" %><br />
-    <%= f.text_field :description, class: "form-control" %>
+  <div class="card bg-white border-none">
+    <div class="card-header font-weight-bold">
+      イベント会場の編集
+    </div>
+    <%= render "event_form_map", {f: f, event: @event} %>
   </div>
-
-  <div class="field">
-    <%= image_tag @event.image.url %>
-    <%= f.label :image, "イベント写真" %><br />
-    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
-    <%= f.hidden_field :image_cache %>
-    <%= render "alert_text" %>
+  <div class="actions">
+    <%= f.submit "イベントを作成する", class: "btn btn-danger btn-lg" %>
   </div>
-
-  <P>地図を検索できます<p>
-  <input id="address" type="textbox" value="">
-  <input type="button" value="検索" onclick="codeAddress()">
-  <!-- 検索値を隠しデータとして送信-->
-  <input type="hidden" name="event[address]" id="hidden_address">
-
-  <div class="field">
-    <%= f.label :title, "イベント住所、または施設の名前を入力してください" %><br />
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
-
-  <%= render 'maps/google_map_edit', { event: @event } %>
-
-  <div class="field">
-    <%= f.label :start_at, "イベント開始日時" %><br />
-    <%= f.datetime_field :start_at, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :end_at, "イベント終了日時" %><br />
-    <%= f.datetime_field :end_at, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :event_team, "イベントチーム" %><br />
-    <%= f.select :event_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :capacity, "定員数" %><br />
-    <%= f.number_field :capacity, min: 2, class: "form-control" %>
-  </div>
-  <%= f.submit "update" %>
 <% end %>
-<p> <%= link_to "戻る", request.referrer || root_path %> </p>

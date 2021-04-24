@@ -1,34 +1,64 @@
-<% provide(:title, @event.event_name) %>
-<p>イベント写真 <%= image_tag @event.image.url %> </p>
-<p>イベント名 <%= @event.event_name %> </p>
-<p>イベント説明 <%= @event.description %> </p>
-<p>イベント住所 <%= @event.address %> </p>
-<p>イベントのタイトル <%= @event.title %> </p>
-<%= render "maps/google_map_view", { event: @event } %>
-
-<p>イベントチーム <%= @event.event_team %> </P>
-<p>定員数 <%= @event.capacity %> <p>
-<div id="likes_buttons_<%= @event.id %>">
-  <%= render 'likes/like', { event: @event} %>
+<div class="card bg-white border-none">
+  <div class="card-header font-weight-bold">
+    イベントの説明
+  </div>
+  <div class="card-body p-4">
+    <div class="form-group px-5">
+      <h2>イベント概要</h2>
+      <span class="event-description">
+        <%= @event.description %>
+      </span>
+      <h2>開催日時</h2>
+      <span class="event-description">
+        <%= @event.event_start_at.strftime('%Y/%m/%d/%R') %>〜<%= @event.event_end_at.strftime('%Y/%m/%d/%R') %>
+      </span>
+      <h2>イベントチーム</h2>
+      <span class="event-description">
+        <%= @event.event_team %>
+      </span>
+      <h2>定員数</h2>
+      <span class="event-description">
+        <%= @event.participations.count %>/<%= @event.capacity %>人
+      </span>
+    </div>
+  </div>
 </div>
-<div>
-  <h4>コメント</h4>
+<div class="card bg-white border-none">
+  <div class="card-header font-weight-bold">
+    イベント会場
+  </div>
+  <div class="card-body p-4">
+    <div class="form-group px-5">
+      <h2>住所</h2>
+      <span class="event-description">
+        <%= @event.address %>
+      </span>
+      <h2>施設名</h2>
+      <span class="event-description">
+        <%= @event.title %>
+      </span>
+      <h2>イベント会場地図</h2>
+      <span class="event-description">
+        <%= render "maps/google_map_view", { event: @event } %>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="comments-view">
+  <h4 class="mt-5 mb-5">コメント一覧</h4>
+  <div class="user-view clearfix">
   <div id="comments_area"><!-- #① -->
     <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
     <%= render "comments/index", { comments: @comments } %>
+  </div>
   </div>
   <% if user_signed_in? %>
     <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
     <%= render "comments/form", { comment: @comment, event: @event } %>
   <% end %>
 </div>
-<% if current_user?(@event.user) %>
-  <%= link_to "イベント編集", edit_event_path(@event.id) %>
-  <%= link_to "イベント削除", @event, method: :delete,
-                data: { confirm: "You sure?" } %>
-<% else %>
-<div id="participations_buttons_<%= @event.id %>">
-  <%= render "participations/participation_event_form", { event: @event } %>
-</div>
+<% unless current_user?(@event.user) %>
+  <div class="text-center mt-3" id="participations_buttons_<%= @event.id %>">
+    <%= render "participations/participation_event_form", { event: @event } %>
+  </div>
 <% end %>
-<p> <%= link_to "Homeに戻る", root_path %> </p>

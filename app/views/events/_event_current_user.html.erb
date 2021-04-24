@@ -40,7 +40,7 @@
       <div>
         <%= link_to "イベント削除", event_path(event.id), class: "event-delete btn btn-danger", method: :delete, data: { confirm: "You sure?" } %>
       </div>
-      定員数:<%= event.participations.count %>/<%= event.capacity %>
+      定員数:<%= event.participations.count %>/<%= event.capacity %>人
     </div>
   </div>
 </div>

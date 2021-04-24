@@ -23,8 +23,8 @@ body {
 }
 
 #map {
-  height: 300px;
-  width: 300px;
+  height: 500px;
+  width: 500px;
 }
 
 .like-btn {
@@ -170,6 +170,7 @@ margin: 0 auto;
 
 .actions {
   text-align: center;
+  margin-top: 10px;
 }
 
 .card-button {
@@ -321,4 +322,13 @@ margin: 0 auto;
 
 .search-card {
   margin-bottom: 20px;
+}
+
+.gmap {
+  margin-top: 20px;
+}
+
+.event-description {
+  background: #f8f8f8;
+  margin: 20px 0;
 }
