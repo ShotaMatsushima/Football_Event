@@ -224,7 +224,7 @@ margin: 0 auto;
 
 /* アクティブなタブ */
 .tab-switch:checked+.tab-label {
-  background: red;
+  background: #ffae00;
 }
 
 .tab-switch:checked+.tab-label+.tab-content {
@@ -283,10 +283,6 @@ margin: 0 auto;
   background-color:#F0B55E;
 }
 
-.event-content-left a {
-  color: black;
-}
-
 .fa-user {
   margin-right: 5px;
 }
@@ -331,4 +327,39 @@ margin: 0 auto;
 .event-description {
   background: #f8f8f8;
   margin: 20px 0;
+  font-size: 20px;
+}
+
+.event-title {
+  text-decoration: underline;
+  text-decoration-color:#ffae00;
+  text-decoration-thickness: 5px;
+}
+
+.event-img {
+  width: 300px;
+}
+
+.must {
+  color: white;
+  background-color: red;
+  padding: 4px 4px;
+}
+
+.event-dates {
+  background-color:#ffae00;
+  padding: 20px 10px;
+  color: white;
+}
+
+.event-content {
+  font-size: 10px;
+}
+
+.event-name {
+  font-size: 15px;
+}
+
+.row::before, .row::after {
+  display: none;
 }

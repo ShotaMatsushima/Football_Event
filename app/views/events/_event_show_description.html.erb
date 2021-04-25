@@ -1,0 +1,25 @@
+<div class="card bg-white border-none">
+  <div class="card-header font-weight-bold">
+    イベントの説明
+  </div>
+  <div class="card-body p-4">
+    <div class="form-group px-5">
+      <h3 class="event-title"><i class="fas fa-lightbulb mr-2"></i>イベント概要</h3>
+      <span class="event-description">
+        <%= event.description %>
+      </span>
+      <h3 class="event-title"><i class="fas fa-calendar-alt mr-2"></i>開催日時</h3>
+      <span class="event-description">
+        <%= event.start_at.strftime('%Y/%m/%d/%R') %>〜<%= event.end_at.strftime('%Y/%m/%d/%R') %>
+      </span>
+      <h3 class="event-title"><i class="fas fa-futbol mr-2"></i>イベントチーム</h3>
+      <span class="event-description">
+        <%= event.event_team %>
+      </span>
+      <h3 class="event-title"><i class="fas fa-user-friends mr-2"></i>定員数</h3>
+      <span class="event-description">
+        <%= event.participations.count %>/<%= event.capacity %>人
+      </span>
+    </div>
+  </div>
+</div>

@@ -19,5 +19,5 @@ class User < ApplicationRecord
                     uniqueness: true
   validates :favorite_team, presence: true
   validates :user_address, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, on: :create, length: { minimum: 6 }
 end

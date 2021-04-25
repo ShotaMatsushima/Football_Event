@@ -1,0 +1,28 @@
+<div class="card bg-white border-none">
+  <div class="card-header font-weight-bold">
+    ユーザー情報の編集
+  </div>
+  <div class="card-body p-4">
+    <div class="form-group px-5">
+      <div class="field mb-5">
+        <%= f.label :name, "ニックネーム" %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+      <div class="field mb-5">
+        <%= f.label :email, "Eメール" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+      <div class="field mb-5 h-50">
+        <%= f.label :user_address, "住所" %><br />
+        <%= f.select :user_address, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class:"form-control" %>
+      </div>
+      <div class="field mb-5 h-50">
+        <%= f.label :favorite_team, "お気に入りチーム" %><br />
+        <%= f.select :favorite_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class:"form-control" %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="actions">
+  <button type="submit" class="card-button btn btn-danger btn-lg">情報を更新する</button>
+</div>

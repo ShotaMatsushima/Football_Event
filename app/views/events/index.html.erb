@@ -1,17 +1,29 @@
 <% provide(:title, "Home") %>
-<div class="row">
-  <div class="col-md-8">
-    <%= render "event_search", { q: @q } %>
-    <% if @events.any? %>
-      <%= render @events, { event: @event} %>
-    <% else %>
-      <h3><%= "イベントがありません。" %></h3>
-    <% end %>
-    <div class="pagenate">
-      <%= paginate @events %>
+<%= image_tag 'football_pub.jpeg',class:"w-100" %>
+<div class="container">
+  <div class="d-flex flex-row flex-wrap">
+    <div class="col-12 col-md-8">
+      <%= render "event_search", { q: @q } %>
+      <% if @events.any? %>
+        <div class="search-card card bg-white border-none">
+          <div class="card-header font-weight-bold">
+            新着イベント一覧
+          </div>
+          <div class="card-body p-4">
+            <div class="search form-group px-5">
+              <%= render @events %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <h3><%= "イベントがありません。" %></h3>
+      <% end %>
+      <div class="pagenate">
+        <%= paginate @events %>
+      </div>
     </div>
-  </div>
-  <div class="col-md-4">
-    <%= render "football_info" %>
+    <div class="col-12 col-md-4">
+      <%= render "football_info" %>
+    </div>
   </div>
 </div>

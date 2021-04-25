@@ -4,7 +4,6 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag 'application' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,13 +11,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <%= render "layouts/shim" %>
   </head>
-
   <body>
-  <%= render "layouts/header" %>
-  <%= render "layouts/notifications" %>
-  <div class="container">
-    <%= yield %>
-  </div>
-  <%= render "layouts/footer" %>
+    <%= render "layouts/header" %>
+    <%= render "layouts/notifications" %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>

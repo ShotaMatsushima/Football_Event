@@ -2,9 +2,8 @@
 <script>
   $(function() {
     $.ajaxSetup({
-      headers : {"X-Auth-Token" : "cdda6451f8fa42d0b4cd14ea4d861a42"}
+      headers : {"X-Auth-Token" : "<%= ENV['FOOTBALL_INFO'] %>"}
     });
-
     $.getJSON('https://api.football-data.org/v2/competitions/PL/standings?standingType=TOTAL', function (data_PL) {
       //JSON取得後の処理
       standings = data_PL.standings[0].table;
@@ -26,12 +25,11 @@
     });
   });
 </script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
   $(function() {
     $.ajaxSetup({
-      headers : {"X-Auth-Token" : "cdda6451f8fa42d0b4cd14ea4d861a42"}
+      headers : {"X-Auth-Token" : "<%= ENV['FOOTBALL_INFO'] %>"}
     });
 
     $.getJSON("https://api.football-data.org/v2/competitions/PL/matches?status=SCHEDULED", function(data_PL) {
@@ -67,8 +65,6 @@
     });
   });
 </script>
-
-
 <div class="rank card bg-white border-none">
   <div class="card-header font-weight-bold">
     順位表

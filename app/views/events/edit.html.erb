@@ -1,4 +1,4 @@
-<% provide(:title, "#{ @event.event_name } edit") %>
+<% provide(:title, "#{ @event.name }-Edit") %>
 <%= render "users/shared/error_messages", resource: @event %>
 <%= form_with(model: @event, local: true) do |f| %>
   <div class="card bg-white border-none">
@@ -11,7 +11,7 @@
     <div class="card-header font-weight-bold">
       イベント会場の編集
     </div>
-    <%= render "event_form_map", {f: f, event: @event} %>
+    <%= render "event_edit_map", {f: f, event: @event} %>
   </div>
   <div class="actions">
     <%= f.submit "イベントを作成する", class: "btn btn-danger btn-lg" %>

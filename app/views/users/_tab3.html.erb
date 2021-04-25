@@ -4,7 +4,11 @@
   </div>
   <div class="card-body p-4">
     <% user_events.each do |event| %>
-      <%= render "events/event_current_user", { event: event } %>
+      <% if current_user?(user) %>
+        <%= render "events/event_current_user", { event: event } %>
+      <% else%>
+        <%= render "events/event", { event: event } %>
+      <% end %>
     <% end %>
     <div class="paginate">
       <%= paginate user_events %>

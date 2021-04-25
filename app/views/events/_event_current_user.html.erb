@@ -1,11 +1,11 @@
 <div class="reviews">
   <div class="flexitem item1">
     <%= image_tag event.image.url %>
-    <% if event.event_start_at.strftime('%m/%d') < Date.today.strftime('%m/%d') %>
+    <% if event.start_at.strftime('%m/%d') < Date.today.strftime('%m/%d') %>
       <div class="event-end">
         終了
       </div>
-    <% elsif event.event_start_at.strftime('%m/%d') == Date.today.strftime('%m/%d') %>
+    <% elsif event.start_at.strftime('%m/%d') == Date.today.strftime('%m/%d') %>
       <div class="event-date">
         開催中
       </div>
@@ -17,9 +17,9 @@
   </div>
   <div class="flexitem item2">
     <div class="event-content-left">
-      <h3>イベント開催日:<%= event.event_start_at.strftime('%Y/%m/%d') %></h3>
+      <h3>イベント開催日:<%= event.start_at.strftime('%Y/%m/%d') %></h3>
       <%= link_to event_path(event.id) do %>
-        <%= event.event_name%>
+        <%= event.name%>
       <% end %>
     </div>
     <div class="left-bottom">

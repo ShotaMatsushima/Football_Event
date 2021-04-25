@@ -1,0 +1,18 @@
+<div class="card bg-white border-none">
+  <div class="card-body p-4">
+    <div class="form-group px-5">
+      <h2><span class="event-dates mr-2">
+        <%= event.start_at.strftime('%m/%d') %>
+      </span>
+      <%= event.name %>
+      </h2>
+      <div class="mt-5 mb-5">
+        <%= image_tag event.image.url, class: "event-img" %>
+      </div>
+      <h3 class="event-title"><i class="fas fa-user"></i>管理者</h3>
+      <span class="fas fa-user event-description">
+        <%= link_to event.user.name, user_path(event.user.id) %>
+      </span>
+    </div>
+  </div>
+</div>
