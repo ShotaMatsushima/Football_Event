@@ -9,7 +9,7 @@ class LikesController < ApplicationController
 
   def destroy
     @event = Event.find(params[:event_id])
-    like = Like.find_by(event_id: params[:event_id], user_id: current_user.id)
+    like = Like.find_by！(event_id: params[:event_id], user_id: current_user.id)
     like.destroy
   end
 end
