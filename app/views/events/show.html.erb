@@ -9,13 +9,27 @@
 <p>イベント終了日時 <%= @event.end_at %> </p>
 <p>イベントチーム <%= @event.event_team %> </P>
 <p>定員数 <%= @event.capacity %> <p>
-<%= render "likes/like", { event: @event } %>
-<%= render "comments/comment", { event: @event, comments: @comments, comment: @comment } %>
+<div id="likes_buttons_<%= @event.id %>">
+  <%= render 'likes/like', { event: @event} %>
+</div>
+<div>
+  <h4>コメント</h4>
+  <div id="comments_area"><!-- #① -->
+    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+    <%= render "comments/index", { comments: @comments } %>
+  </div>
+  <% if user_signed_in? %>
+    <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+    <%= render "comments/form", { comment: @comment, event: @event } %>
+  <% end %>
+</div>
 <% if current_user?(@event.user) %>
   <%= link_to "イベント編集", edit_event_path(@event.id) %>
   <%= link_to "イベント削除", @event, method: :delete,
                 data: { confirm: "You sure?" } %>
 <% else %>
+<div id="participations_buttons_<%= @event.id %>">
   <%= render "participations/participation_event_form", { event: @event } %>
+</div>
 <% end %>
 <p> <%= link_to "Homeに戻る", root_path %> </p>
