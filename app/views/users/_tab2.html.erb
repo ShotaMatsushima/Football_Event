@@ -1,0 +1,13 @@
+<div class="card bg-white border-none">
+  <div class="card-header font-weight-bold">
+    イベント参加数:<%= participaton_events.count %>件
+  </div>
+  <div class="card-body p-4">
+    <% participaton_events.each do |event| %>
+      <%= render "events/event", { event: event } %>
+    <% end %>
+    <div class="paginate">
+      <%= paginate participaton_events %>
+    </div>
+  </div>
+</div>

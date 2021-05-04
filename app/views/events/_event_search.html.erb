@@ -1,18 +1,24 @@
-<%= search_form_for q, url: root_path do |f| %>
-  <div class="field">
-    <%= f.label :name, "イベント名" %><br/>
-    <%= f.search_field :name_cont %>
+<div class="search-card card bg-white border-none">
+  <div class="card-header font-weight-bold">
+    イベント検索
   </div>
-
-  <div class="field">
-    <%= f.label :event_team, "イベントチーム" %><br/>
-    <%= f.select :event_team_eq, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class:"form-control" %>
+  <div class="card-body p-4">
+    <div class="search form-group px-5">
+      <%= search_form_for q, url: root_path do |f| %>
+        <div class="field">
+          <%= f.label :name, "イベント名" %><br/>
+          <%= f.search_field :name_cont %>
+        </div>
+        <div class="field mt-3 mb-3">
+          <%= f.label :event_team, "イベントチーム" %><br/>
+          <%= f.select :event_team_eq, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class:"form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :address, "イベント住所" %><br/>
+          <%= f.select :address_cont, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class:"form-control" %>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">イベントを検索する</button>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :address, "イベント住所" %><br/>
-    <%= f.select :address_cont, TODOUFUKEN.map{ |r| [r, r] }, :prompt => "選択してください", class:"form-control" %>
-  </div>
-
-  <%= f.submit "検索" %>
-<% end %>
+</div>

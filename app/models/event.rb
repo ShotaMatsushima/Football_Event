@@ -2,8 +2,8 @@ class Event < ApplicationRecord
   # アソシエーション
   belongs_to :user
   has_many :participations
-  has_many :likes
-  has_many :comments
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :notifications
   # 画像アップロード
   mount_uploader :image, ImageUploader
@@ -16,13 +16,25 @@ class Event < ApplicationRecord
   validates :event_team, presence: true
   validates :capacity, presence: true, :numericality => { :greater_than_or_equal_to => 2 }
   validates :image, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
   validates :title, presence: true
+  validate :date_cannot_be_in_the_past
+  validate :date_end_cannot_be_in_the_past
 
   # バリデーションの前に送信されたaddressの値によってジオコーディング(緯度経度の算出)を行う
   geocoded_by :address
-  before_validation :geocode
+  after_validation :geocode
+
+  def date_cannot_be_in_the_past
+    if start_at.present?
+      errors.add(:start_at, "は過去の日に設定できません") if start_at < Date.today
+    end
+  end
+
+  def date_end_cannot_be_in_the_past
+    if start_at.present? && end_at.present?
+      errors.add(:end_at, "は開始時間よりあとに設定してください") if start_at > end_at
+    end
+  end
 
   def participated_by?(user)
     participations.where(user_id: user.id).exists?
@@ -77,7 +89,7 @@ class Event < ApplicationRecord
 
   def create_notification_participation!(current_user)
     # すでに参加しているか検索
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'participation'])
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
     # 参加していない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -85,7 +97,11 @@ class Event < ApplicationRecord
         visited_id: user_id,
         action: 0
       )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notification.visiter_id == notification.visited_id
+        return
+      end
+      notification.save if notification.valid?
     end
-    notification.save if notification.valid?
   end
 end

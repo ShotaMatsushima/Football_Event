@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = User.find(params[:id])
-    @participaton_events = @user.participaton_events
+    @user_events = @user.events.all.order(created_at: :desc).page(params[:page]).per(10)
+    @participaton_events = @user.participaton_events.order(created_at: :desc).page(params[:page]).per(10)
   end
 end

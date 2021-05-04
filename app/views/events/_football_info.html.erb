@@ -1,0 +1,109 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+  $(function() {
+    $.ajaxSetup({
+      headers : {"X-Auth-Token" : "<%= ENV['FOOTBALL_INFO'] %>"}
+    });
+    $.getJSON('https://api.football-data.org/v2/competitions/PL/standings?standingType=TOTAL', function (data_PL) {
+      //JSON取得後の処理
+      standings = data_PL.standings[0].table;
+      // 順位表にデータを挿入
+      standings.forEach(function(standing) {
+        $("#league-tbl").append(
+          '<tr align="center">'
+          + '<td>' + standing.position + '</td>'
+          + '<td>' + '<div style = "text-align: left"><div style="display: table-cell; vertical-align: middle;"><img src="' + standing.team.crestUrl + '" height="24"></div><div style="display: table-cell; vertical-align: middle;">'
+          + standing.team.name + '</div></div></td>'
+          + '<td>' + standing.playedGames + '</td>'
+          + '<td>' + standing.won + '</td>'
+          + '<td>' + standing.draw + '</td>'
+          + '<td>' + standing.lost + '</td>'
+          + '<td>' + standing.points + '</td>'
+          + '</tr>'
+        )
+      });
+    });
+  });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+  $(function() {
+    $.ajaxSetup({
+      headers : {"X-Auth-Token" : "<%= ENV['FOOTBALL_INFO'] %>"}
+    });
+
+    $.getJSON("https://api.football-data.org/v2/competitions/PL/matches?status=SCHEDULED", function(data_PL) {
+      //JSON取得後の処理
+      game_list = data_PL.matches;
+      games_num = data_PL.count;
+
+      var youbi = ["日", "月", "火", "水", "木", "金", "土"];
+      var date, jdate;
+      var jtime = "";
+
+      for (var i = 0; i < games_num; i++) {
+        // 日時を日本時間に変換
+        date = new Date(game_list[i].utcDate);
+        date = date.toLocaleString("ja-JP");
+        jdate = new Date(date);
+        jtime = (jdate.getHours() + ':' + ("0" + jdate.getMinutes()).slice(-2)); // キックオフ時刻をX:XX表記にする
+        //日程表にデータを挿入
+        $("#matches-tbl").append(
+        '<tr align="center">'
+        + '<td><img src="https://crests.football-data.org/' + game_list[i].homeTeam.id + '.svg" height="30">'
+        + '<br />'
+        + game_list[i].homeTeam.name + '</td>'
+        + '<td class="' + game_list[i].td_class + '">'
+        + (jdate.getMonth() + 1) + '/' + jdate.getDate() + '(' + youbi[jdate.getDay()] + ')'
+        + '<br />' + jtime + '</td>'
+        + '<td><img src="https://crests.football-data.org/' + game_list[i].awayTeam.id + '.svg" height="30">'
+        + '<br />'
+        + game_list[i].awayTeam.name + '</td>'
+        + '</tr>'
+        );
+      }
+    });
+  });
+</script>
+<div class="rank card bg-white border-none">
+  <div class="card-header font-weight-bold">
+    順位表
+  </div>
+  <div class="card-body p-4">
+    <div style="height:800px; overflow-y:scroll;">
+      <table>
+        <thead>
+          <tr align="center">
+            <th width="10%">順位</th>
+            <th width="40%">クラブ</th>
+            <th width="10%">試合</th>
+            <th width="10%">勝</th>
+            <th width="10%">分</th>
+            <th width="10%">負</th>
+            <th width="10%">Pts</th>
+          </tr>
+        </thead>
+        <tbody id="league-tbl"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="card bg-white border-none">
+  <div class="card-header font-weight-bold">
+  スケジュール
+</div>
+  <div class="card-body p-4">
+    <div style="height:800px; overflow-y:scroll;">
+      <table>
+        <thead>
+          <tr align="center">
+            <th width="40%">ホーム</th>
+            <th width="20%">日時<br />(日本時間)</th>
+            <th width="40%">アウェイ</th>
+          </tr>
+        </thead>
+      <tbody id="matches-tbl"></tbody>
+      </table>
+    </div>
+  </div>
+</div>

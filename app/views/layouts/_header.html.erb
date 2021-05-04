@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container mb-2">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag 'logo1.png' %>
+    <% end %>
+    <div class="nav-item">
+      <%= link_to "イベント作成", new_event_path, class: "nav-button btn btn-danger btn-lg" %>
+    </div>
+    <div class="nav navbar-nav navbar-right">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to root_path, class: "nav-link" do %>
+              <i class="fas fa-home fa-2x"></i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to notifications_path, class: "nav-link" do %>
+              <i class="far fa-bell fa-2x"></i>
+              <% if unchecked_notifications.any? %>
+                <i class="fa fa-circle" style="color: red;"></i>
+              <% end %>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%=link_to "ログイン・新規登録", user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to root_path, class: "nav-link" do %>
+              <i class="fas fa-home fa-2x"></i>
+            <% end %>
+          </li>
+        <% end %>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true">
+            <i class="far fa-user-circle fa-2x"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <% if user_signed_in? %>
+              <%=link_to current_user.name, current_user, class: "dropdown-item" %>
+              <%=link_to "プロフィール編集", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: "You sure?" } %>
+            <% else %>
+              <%=link_to "ログイン・新規登録", user_session_path, class: "dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

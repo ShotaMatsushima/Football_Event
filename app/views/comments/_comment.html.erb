@@ -10,7 +10,7 @@
 <% if user_signed_in? %>
   <%= form_for [event, comment] do |f| %>
     <div class="field">
-      <%= f.label :content, "コメント" %><br />
+      <%= f.label :content, "コメント" %><br/>
       <%= f.text_field :content, class: "form-control" %>
     </div>
     <%= f.submit "コメントする" %>

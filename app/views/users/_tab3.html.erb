@@ -1,0 +1,17 @@
+<div class="card bg-white border-none">
+  <div class="card-header font-weight-bold">
+    イベント作成数:<%= user_events.count %>件
+  </div>
+  <div class="card-body p-4">
+    <% user_events.each do |event| %>
+      <% if current_user?(user) %>
+        <%= render "events/event_current_user", { event: event } %>
+      <% else%>
+        <%= render "events/event", { event: event } %>
+      <% end %>
+    <% end %>
+    <div class="paginate">
+      <%= paginate user_events %>
+    </div>
+  </div>
+</div>

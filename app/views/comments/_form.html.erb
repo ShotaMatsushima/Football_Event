@@ -1,8 +1,8 @@
 <%= form_with(model: [event, comment], url: event_comments_path(@event)) do |f| %>
   <div>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit "コメントをする" %>
+  <div class="actions-comment mt-3">
+    <%= f.submit "コメントをする", class: "btn btn-primary" %>
   </div>
 <% end %>

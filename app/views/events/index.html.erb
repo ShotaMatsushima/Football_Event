@@ -1,14 +1,29 @@
-<% provide(:title, "Event all") %>
-<% if unchecked_notifications.any? %>
-  <i class="fa fa-circle" style="color: gold;"></i>
-<% end %>
-<%= link_to "NOTICE", notifications_path, class: "btn-default" %>
-<h1> <%= link_to "イベント作成", new_event_path %> </h1>
-<p> <%= link_to "マイページ", current_user %> </p>
-<%= render "event_search", { q: @q }%>
-<% if @events.any? %>
-  <%= render @events %>
-<% else %>
-  <h3><%= "検索結果がありません。" %></h3>
-<% end %>
-<%= paginate @events %>
+<% provide(:title, "Home") %>
+<%= image_tag 'football_pub.jpeg',class:"w-100" %>
+<div class="container">
+  <div class="d-flex flex-row flex-wrap">
+    <div class="col-12 col-md-8">
+      <%= render "event_search", { q: @q } %>
+      <% if @events.any? %>
+        <div class="search-card card bg-white border-none">
+          <div class="card-header font-weight-bold">
+            新着イベント一覧
+          </div>
+          <div class="card-body p-4">
+            <div class="search form-group px-5">
+              <%= render @events %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <h3><%= "イベントがありません。" %></h3>
+      <% end %>
+      <div class="pagenate">
+        <%= paginate @events %>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <%= render "football_info" %>
+    </div>
+  </div>
+</div>

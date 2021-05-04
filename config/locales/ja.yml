@@ -1,5 +1,24 @@
 ja:
   activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        name: イベント名
+        description: イベント説明
+        event_team: イベントチーム
+        capacity: 定員数
+        image: 画像
+        latitude: 地図
+        longitude: 地図
+        title: 施設名
+        start_at: 開始時間
+        end_at: 終了時間
+      user:
+        name: ニックネーム
+        favorite_team: お気に入りチーム
+        event_team: イベントチーム
+        user_address: 住所
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -108,6 +127,7 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
+      Name: ニックネーム
       accepted: を受諾してください
       blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません
@@ -204,3 +224,10 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."

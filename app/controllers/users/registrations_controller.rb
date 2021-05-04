@@ -38,14 +38,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+    protected
 
+      #必須  更新（編集の反映）時にパスワード入力を省く
+      def update_resource(resource, params)
+        resource.update_without_password(params)
+      end
+
+      #任意  更新後のパスを指定
+      def after_update_path_for(resource)
+        user_path(@user.id)
+      end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
 
-  # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
