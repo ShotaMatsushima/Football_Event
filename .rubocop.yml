@@ -1,5 +1,53 @@
 inherit_from:
   - .rubocop_airbnb.yml
+# Rails用に最適化
+Rails:
+  Enabled: true
+
+# 文字数上限
+LineLength:
+  Max: 130
+
+# devise
+Airbnb/ClassOrModuleDeclaredInWrongFile:
+  Exclude:
+    - 'app/controllers/Users/*'
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - 'spec/models/user_spec.rb'
+
+Rails/HelperInstanceVariable:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+
+Rails/HelperInstanceVariable:
+  Exclude:
+    - 'app/helpers/notifications_helper.rb'
+
+Airbnb/FactoryClassUseString:
+  Exclude:
+    - 'spec/factories/events.rb'
+
+Airbnb/FactoryAttrReferencesClass:
+  Exclude:
+    - 'spec/factories/events.rb'
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'spec/requests/notifications_request_spec.rb'
+    - 'spec/requests/participations_request_spec.rb'
+    -  'spec/requests/likes_request_spec.rb'
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - 'spec/requests/likes_request_spec.rb'
+    - 'spec/requests/notifications_request_spec.rb'
+
+Style/MutableConstant:
+  Exclude:
+    - 'app/models/user.rb'
+
 AllCops:
   Exclude:
   - 'db/**/*'
