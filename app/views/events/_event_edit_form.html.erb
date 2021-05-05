@@ -1,0 +1,36 @@
+<div class="card-body p-4">
+  <div class="form-group px-5">
+    <div class="field mb-5">
+      <div class="event-edit-img">
+        <%= image_tag event.image.url, class: "event-img mb-5" %>
+      </div>
+      <span class="must mr-2">必須</span><%= f.label :image, "イベント写真" %><br />
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+      <%= render "alert_text" %>
+    </div>
+      <div class="field mb-5">
+        <span class="must mr-2">必須</span><%= f.label :name, "イベント名" %><br />
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+    <div class="field mb-5">
+      <span class="must mr-2">必須</span><%= f.label :description, "イベント説明" %><br />
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+    <div class="field mb-5">
+      <span class="must mr-2">必須</span><%= f.label :event_team, "イベントチーム" %><br />
+      <%= f.select :event_team, FOOTBALL_TEAM.map{ |r| [r, r] } ,:prompt => "選択してください", class: "form-control" %>
+    </div>
+    <div class="field mb-5">
+      <span class="must mr-2">必須</span><%= f.label :start_at, "イベント開始日時" %><br />
+      <%= f.datetime_select :start_at, class: "form-control" %>
+    </div>
+    <div class="field mb-5">
+      <span class="must mr-2">必須</span><%= f.label :end_at, "イベント終了日時" %><br />
+      <%= f.datetime_select :end_at, class: "form-control" %>
+    </div>
+    <div class="field">
+      <span class="must mr-2">必須</span><%= f.label :capacity, "定員数" %><br />
+      <%= f.number_field :capacity, min: 2 %>
+    </div>
+  </div>
+</div>

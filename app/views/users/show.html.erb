@@ -1,31 +1,33 @@
-<% provide(:title, @user.name) %>
-<h3>
-  <i class="fas fa-user"></i>
-  ニックネーム:
-  <%= @user.name %></h3>
-</h3>
-<h3>
-  <i class="fas fa-home"></i>
-  住まい:
-  <%= @user.user_address %></h3>
-</h3>
-<h3>
-  <i class="fas fa-futbol"></i>
-  お気に入りチーム:
-  <%= @user.favorite_team %></h3>
-</h3>
-<% if current_user?(@user) %>
-  <div class="actions-edit">
-    <%= link_to "プロフィール編集", edit_user_registration_path(@user.id), class: "card-button btn btn-primary btn-lg" %>
-  </div>
-<% end %>
-<div class="tab-wrap">
-  <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">イベント参加履歴</label>
-  <div class="tab-content">
-    <%= render "tab2", { participaton_events: @participaton_events, user: @user } %>
-  </div>
-  <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">イベント作成履歴</label>
-  <div class="tab-content">
-    <%= render "tab3", { user_events: @user_events, user: @user } %>
+<div class="container">
+  <% provide(:title, @user.name) %>
+  <h3>
+    <i class="fas fa-user"></i>
+    ニックネーム:
+    <%= @user.name %></h3>
+  </h3>
+  <h3>
+    <i class="fas fa-home"></i>
+    住まい:
+    <%= @user.user_address %></h3>
+  </h3>
+  <h3>
+    <i class="fas fa-futbol"></i>
+    お気に入りチーム:
+    <%= @user.favorite_team %></h3>
+  </h3>
+  <% if current_user?(@user) %>
+    <div class="actions-edit">
+      <%= link_to "プロフィール編集", edit_user_registration_path(@user.id), class: "card-button btn btn-primary btn-lg" %>
+    </div>
+  <% end %>
+  <div class="tab-wrap">
+    <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">イベント参加履歴</label>
+    <div class="tab-content">
+      <%= render "tab2", { participaton_events: @participaton_events, user: @user } %>
+    </div>
+    <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">イベント作成履歴</label>
+    <div class="tab-content">
+      <%= render "tab3", { user_events: @user_events, user: @user } %>
+    </div>
   </div>
 </div>

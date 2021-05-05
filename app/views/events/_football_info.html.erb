@@ -31,7 +31,6 @@
     $.ajaxSetup({
       headers : {"X-Auth-Token" : "<%= ENV['FOOTBALL_INFO'] %>"}
     });
-
     $.getJSON("https://api.football-data.org/v2/competitions/PL/matches?status=SCHEDULED", function(data_PL) {
       //JSON取得後の処理
       game_list = data_PL.matches;
@@ -70,7 +69,7 @@
     順位表
   </div>
   <div class="card-body p-4">
-    <div style="height:800px; overflow-y:scroll;">
+    <div style="height:1000px; overflow-y:scroll;">
       <table>
         <thead>
           <tr align="center">
@@ -93,7 +92,7 @@
   スケジュール
 </div>
   <div class="card-body p-4">
-    <div style="height:800px; overflow-y:scroll;">
+    <div style="height:1000px; overflow-y:scroll;">
       <table>
         <thead>
           <tr align="center">

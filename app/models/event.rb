@@ -15,7 +15,7 @@ class Event < ApplicationRecord
   validates :end_at, presence: true
   validates :event_team, presence: true
   validates :capacity, presence: true, :numericality => { :greater_than_or_equal_to => 2 }
-  validates :image, presence: true
+  validates :image, presence: true, on: :create
   validates :title, presence: true
   validate :date_cannot_be_in_the_past
   validate :date_end_cannot_be_in_the_past
