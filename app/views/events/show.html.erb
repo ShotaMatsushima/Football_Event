@@ -1,27 +1,29 @@
 <% provide(:title, @event.name) %>
-<%= render "event_show_title", { event: @event } %>
-<%= render "event_show_description", { event: @event } %>
-<%= render "event_show_map", { event: @event } %>
-<% if user_signed_in? %>
-  <div class="mt-3" id="likes_buttons_<%= @event.id %>">
-    <%= render 'likes/like', { event: @event} %>
-  </div>
-<% end %>
-<% if user_signed_in? %>
-  <div class="comments-view">
-    <h4 class="mt-5 mb-5"><i class="far fa-comment-dots"></i>コメント一覧</h4>
-    <div class="user-view clearfix">
-      <div id="comments_area"><!-- #① -->
-      <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-      <%= render "comments/index", { comments: @comments } %>
-      </div>
-    </div>
-    <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-    <%= render "comments/form", { comment: @comment, event: @event } %>
-  </div>
-  <% unless current_user?(@event.user) %>
-    <div class="text-center mt-3" id="participations_buttons_<%= @event.id %>">
-      <%= render "participations/participation_event_form", { event: @event } %>
+<div class="container">
+  <%= render "event_show_title", { event: @event } %>
+  <%= render "event_show_description", { event: @event } %>
+  <%= render "event_show_map", { event: @event } %>
+  <% if user_signed_in? %>
+    <div class="mt-3" id="likes_buttons_<%= @event.id %>">
+      <%= render 'likes/like', { event: @event} %>
     </div>
   <% end %>
-<% end %>
+  <% if user_signed_in? %>
+    <div class="comments-view">
+      <h4 class="mt-5 mb-5"><i class="far fa-comment-dots"></i>コメント一覧</h4>
+      <div class="user-view clearfix">
+        <div id="comments_area"><!-- #① -->
+        <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+        <%= render "comments/index", { comments: @comments } %>
+        </div>
+      </div>
+      <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+      <%= render "comments/form", { comment: @comment, event: @event } %>
+    </div>
+    <% unless current_user?(@event.user) %>
+      <div class="text-center mt-3" id="participations_buttons_<%= @event.id %>">
+        <%= render "participations/participation_event_form", { event: @event } %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,19 +1,21 @@
 <% provide(:title, "#{ @event.name }-Edit") %>
-<%= render "users/shared/error_messages", resource: @event %>
-<%= form_with(model: @event, local: true) do |f| %>
-  <div class="card bg-white border-none">
-    <div class="card-header font-weight-bold">
-      イベント詳細の編集
+<div class="container">
+  <%= render "users/shared/error_messages", resource: @event %>
+  <%= form_with(model: @event, local: true) do |f| %>
+    <div class="card bg-white border-none">
+      <div class="card-header font-weight-bold">
+        イベント詳細の編集
+      </div>
+      <%= render "event_edit_form", {f: f, event: @event } %>
     </div>
-    <%= render "event_form", {f: f} %>
-  </div>
-  <div class="card bg-white border-none">
-    <div class="card-header font-weight-bold">
-      イベント会場の編集
+    <div class="card bg-white border-none">
+      <div class="card-header font-weight-bold">
+        イベント会場の編集
+      </div>
+      <%= render "event_edit_map", {f: f, event: @event} %>
     </div>
-    <%= render "event_edit_map", {f: f, event: @event} %>
-  </div>
-  <div class="actions">
-    <%= f.submit "イベントを作成する", class: "btn btn-danger btn-lg" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "イベントを編集する", class: "btn btn-danger btn-lg" %>
+    </div>
+  <% end %>
+</div>

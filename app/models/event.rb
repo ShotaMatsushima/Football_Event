@@ -15,7 +15,7 @@ class Event < ApplicationRecord
   validates :end_at, presence: true
   validates :event_team, presence: true
   validates :capacity, presence: true, :numericality => { :greater_than_or_equal_to => 2 }
-  validates :image, presence: true
+  validates :image, presence: true, on: :create
   validates :title, presence: true
   validate :date_cannot_be_in_the_past
   validate :date_end_cannot_be_in_the_past
@@ -33,6 +33,18 @@ class Event < ApplicationRecord
   def date_end_cannot_be_in_the_past
     if start_at.present? && end_at.present?
       errors.add(:end_at, "は開始時間よりあとに設定してください") if start_at > end_at
+    end
+  end
+
+  def date_cannot_be_in_the_past
+    if start_at.present?
+      errors.add(:start_at, "は過去の日に設定できません") if start_at < Date.today
+    end
+  end
+
+  def date_end_cannot_be_in_the_past
+    if start_at.present? && end_at.present?
+      errors.add(:end_at, "よりあとに設定してください") if start_at > end_at
     end
   end
 

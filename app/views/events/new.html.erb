@@ -1,19 +1,22 @@
 <% provide(:title, "Event-New") %>
-<%= render "users/shared/error_messages", resource: @event %>
-<%= form_with(model: @event, local: true) do |f| %>
-  <div class="card bg-white border-none">
-    <div class="card-header font-weight-bold">
-      イベント詳細
+<div class="container">
+  <%= render "users/shared/error_messages", resource: @event %>
+  <%= form_with(model: @event, local: true) do |f| %>
+    <div class="card bg-white border-none">
+      <div class="card-header font-weight-bold">
+        イベント詳細
+      </div>
+      <%= render "event_form", {f: f} %>
     </div>
-    <%= render "event_form", {f: f} %>
-  </div>
-  <div class="card bg-white border-none">
-    <div class="card-header font-weight-bold">
-      イベント会場
+    <div class="card bg-white border-none">
+      <div class="card-header font-weight-bold">
+        イベント会場
+      </div>
+      <%= render "event_form_map", {f: f, event: @event} %>
     </div>
-    <%= render "event_form_map", {f: f, event: @event} %>
+    <div class="actions">
+      <%= f.submit "イベントを作成する", class: "btn btn-danger btn-lg" %>
+    </div>
+  <% end %>
   </div>
-  <div class="actions">
-    <%= f.submit "イベントを作成する", class: "btn btn-danger btn-lg" %>
-  </div>
-<% end %>
+</div>

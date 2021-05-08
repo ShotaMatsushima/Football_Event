@@ -7,6 +7,7 @@ gem 'kaminari'
 gem 'ransack'
 gem 'rails', '~> 5.2.1'
 gem 'dotenv-rails'
+gem 'mini_racer',       '~> 0.3.1'
 gem 'geocoder'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
@@ -14,6 +15,7 @@ gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'image_processing',           '1.9.3'
 gem 'mini_magick',                '4.9.5'
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -43,6 +45,10 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production, :staging do
+    gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
