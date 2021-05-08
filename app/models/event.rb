@@ -16,13 +16,14 @@ class Event < ApplicationRecord
   validates :event_team, presence: true
   validates :capacity, presence: true, :numericality => { :greater_than_or_equal_to => 2 }
   validates :image, presence: true, on: :create
+  validates :latitude, presence: true
   validates :title, presence: true
   validate :date_cannot_be_in_the_past
   validate :date_end_cannot_be_in_the_past
 
   # バリデーションの前に送信されたaddressの値によってジオコーディング(緯度経度の算出)を行う
   geocoded_by :address
-  after_validation :geocode
+  before_validation :geocode
 
   def date_cannot_be_in_the_past
     if start_at.present?

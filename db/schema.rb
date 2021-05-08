@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(version: 2021_04_17_003544) do
+ActiveRecord::Schema.define(version: 2021_05_08_010251) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -14,17 +14,17 @@ ActiveRecord::Schema.define(version: 2021_04_17_003544) do
     t.string "name", default: "", null: false
     t.text "description", null: false
     t.string "address", default: "", null: false
-    t.datetime "start_at"
+    t.datetime "start_at", null: false
     t.string "event_team", default: "", null: false
-    t.integer "capacity"
-    t.bigint "user_id"
+    t.integer "capacity", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "end_at"
+    t.datetime "end_at", null: false
     t.string "image"
-    t.float "latitude", null: false
-    t.float "longitude", null: false
-    t.text "title"
+    t.float "latitude"
+    t.float "longitude"
+    t.text "title", null: false
     t.index ["user_id", "created_at"], name: "index_events_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
