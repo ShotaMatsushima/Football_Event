@@ -48,14 +48,15 @@ class EventsController < ApplicationController
 
   private
 
-    def event_params
-      params.require(:event).permit(:name, :description, :address,
-                                    :start_at, :end_at, :event_team,
-                                    :capacity, :image, :image_cache, :latitude, :longitude, :title)
-    end
+  def event_params
+    params.require(:event).permit(:name, :description, :address,
+                                  :start_at, :end_at, :event_team,
+                                  :capacity, :image, :image_cache,
+                                  :latitude, :longitude, :title)
+  end
 
-    def correct_user
-      @event = current_user.events.find_by(id: params[:id])
-      redirect_to root_url if @event.nil?
-    end
+  def correct_user
+    @event = current_user.events.find_by(id: params[:id])
+    redirect_to root_url if @event.nil?
+  end
 end

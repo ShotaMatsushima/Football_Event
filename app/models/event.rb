@@ -16,25 +16,14 @@ class Event < ApplicationRecord
   validates :event_team, presence: true
   validates :capacity, presence: true, :numericality => { :greater_than_or_equal_to => 2 }
   validates :image, presence: true, on: :create
+  validates :latitude, presence: true
   validates :title, presence: true
   validate :date_cannot_be_in_the_past
   validate :date_end_cannot_be_in_the_past
 
   # バリデーションの前に送信されたaddressの値によってジオコーディング(緯度経度の算出)を行う
   geocoded_by :address
-  after_validation :geocode
-
-  def date_cannot_be_in_the_past
-    if start_at.present?
-      errors.add(:start_at, "は過去の日に設定できません") if start_at < Date.today
-    end
-  end
-
-  def date_end_cannot_be_in_the_past
-    if start_at.present? && end_at.present?
-      errors.add(:end_at, "は開始時間よりあとに設定してください") if start_at > end_at
-    end
-  end
+  before_validation :geocode
 
   def date_cannot_be_in_the_past
     if start_at.present?
@@ -58,7 +47,9 @@ class Event < ApplicationRecord
 
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+    temp = Notification.where(
+      ["visiter_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'like']
+    )
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -78,7 +69,7 @@ class Event < ApplicationRecord
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Comment.select(:user_id).where(event_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
-        save_notification_comment!(current_user, comment_id, temp_id['user_id'])
+      save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
     save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
@@ -101,7 +92,9 @@ class Event < ApplicationRecord
 
   def create_notification_participation!(current_user)
     # すでに参加しているか検索
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+    temp = Notification.where(
+      ["visiter_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'like']
+    )
     # 参加していない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(

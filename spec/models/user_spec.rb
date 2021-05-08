@@ -112,8 +112,7 @@ RSpec.describe User, type: :model do
     # Eメールのフォーマットが正しくない場合、有効でないこと
     context "when same email is already create" do
       it "is invalid with wrong format email" do
-        invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
-                                foo@bar_baz.com foo@bar+baz.com]
+        invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.foo@bar_baz.com foo@bar+baz.com]
         invalid_addresses.each do |invalid_address|
           user.email = invalid_address
         end
