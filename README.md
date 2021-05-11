@@ -67,3 +67,6 @@ Rubocop(静的解析)
 
 
 ![Untitled Diagram (5)](https://user-images.githubusercontent.com/70948169/117803902-19a2c880-b292-11eb-8021-0c95dbe18276.png)
+
+![Database ER diagram (crow's foot) (2)](https://user-images.githubusercontent.com/70948169/117804107-55d62900-b292-11eb-9ea6-853d0d2fe293.png)
+
