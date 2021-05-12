@@ -15,7 +15,7 @@
 * ユーザー登録、ログイン機能(devise)
 
 * イベント投稿機能
-  * イベント画像(carrierwave)
+  * 画像投稿(carrierwave)
  
   * イベント会場の位置情報検索機能(geocoder)
 
