@@ -11,30 +11,7 @@
 * スタジムに行けない人
 <br>
 
-# 使用技術
 
-* Ruby 2.5.3
-* Ruby on rails 5.2.4.4
-* Mysql 5.7
-* NGINX
-* Puma
-* unicorn
-* AWS
-  * VPC
-  * EC2
-  * RDS
-  * ALB
-  * ACM
-  * Route 53
-  * S3
-* Docker 19.03.8
-* Docker-compose 1.25.5
-* CircleCi 2.0
-* Rspec 3.10
-* Rubocop
-* Google Map API
-* football-data.org API 
-<br>
 
 # 機能一覧
 * ユーザー登録、ログイン機能(devise)
@@ -66,6 +43,31 @@
   * 結合テスト(system)
 * Rubocop(静的解析)
 <br>
+<br>
+
+# 使用技術
+
+* Ruby 2.5.3
+* Ruby on rails 5.2.4.4
+* Mysql 5.7
+* NGINX
+* Puma
+* unicorn
+* AWS
+  * VPC
+  * EC2
+  * RDS
+  * ALB
+  * ACM
+  * Route 53
+  * S3
+* Docker 19.03.8
+* Docker-compose 1.25.5
+* CircleCi 2.0
+* Rspec 3.10
+* Rubocop
+* Google Map API
+* football-data.org API 
 <br>
 
 
