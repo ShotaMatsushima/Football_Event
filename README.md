@@ -17,7 +17,7 @@
 * イベント投稿機能
   * 画像投稿(carrierwave)
  
-  * イベント会場の位置情報検索機能(geocoder)
+  * 位置情報検索機能(geocoder)
 
 * いいね機能(Ajax)
  
