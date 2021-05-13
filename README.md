@@ -1,8 +1,16 @@
-### イベント作成
+# Football Event
+https://football-event.com/
+
+## トップページ
+![AVAssetExportPreset1920x1080 6 MOV](https://user-images.githubusercontent.com/70948169/118115232-a6c95700-b423-11eb-9f0c-cae1a9bb0aa1.gif)
+<br>
+<br>
+
+## イベント作成
 ![AVAssetExportPreset1920x1080 3 MOV](https://user-images.githubusercontent.com/70948169/118108690-42a29500-b41b-11eb-913b-7982d25f929f.gif)
 <br>
 <br>
-### いいね、コメント、イベント参加機能(Ajax)
+## いいね、コメント、イベント参加機能(Ajax)
 ![AVAssetExportPreset1920x1080 5 MOV](https://user-images.githubusercontent.com/70948169/118113875-ce1f2480-b421-11eb-9d76-afd3d81a9a7e.gif)
 <br>
 <br>
@@ -49,7 +57,6 @@
   * 機能テスト(request)
   * 結合テスト(system)
 * Rubocop(静的解析)
-<br>
 <br>
 
 # 使用技術
