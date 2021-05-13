@@ -1,8 +1,11 @@
 ### イベント作成
 ![AVAssetExportPreset1920x1080 3 MOV](https://user-images.githubusercontent.com/70948169/118108690-42a29500-b41b-11eb-913b-7982d25f929f.gif)
-
+<br>
+<br>
 ### いいね、コメント、イベント参加機能(Ajax)
-
+![AVAssetExportPreset1920x1080 5 MOV](https://user-images.githubusercontent.com/70948169/118113875-ce1f2480-b421-11eb-9d76-afd3d81a9a7e.gif)
+<br>
+<br>
 
 # どんなアプリか
 * サッカー好きな人が集まってスポーツバーで観戦できるサイトです。
