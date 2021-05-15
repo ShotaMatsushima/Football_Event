@@ -115,5 +115,5 @@ https://football-event.com/
   * githubのissueを活用しながら開発
   * git rebaseを使い現場で発生するコンクリフト事象を発生させながら開発
   * コードレビューしてもらいやすように綺麗なコードで記述
-* API実装
-*  
+* Google Map API実装
+* サッカー順位表、試合スケジュール API実装
