@@ -248,7 +248,6 @@ margin: 0 auto;
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 0 0 1.5px #999;
-  
 }
 
 .item2 {
@@ -362,4 +361,8 @@ margin: 0 auto;
 
 .row::before, .row::after {
   display: none;
+}
+
+.event-head {
+  display: flex;
 }

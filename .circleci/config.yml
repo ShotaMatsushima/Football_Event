@@ -10,6 +10,9 @@ jobs:
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
+      - image: selenium/standalone-chrome-debug
+        logging:
+          driver: none
     working_directory: ~/repo
     steps:
       - checkout

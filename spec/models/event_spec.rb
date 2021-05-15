@@ -141,14 +141,5 @@ RSpec.describe Event, type: :model do
         expect(event.errors[:capacity]).to include("を入力してください")
       end
     end
-
-    # イベント定員数が存在しない場合、有効でないこと
-    context "when image is blank" do
-      it "is invalid without image" do
-        event.image = nil
-        event.valid?
-        expect(event.errors[:image]).to include("を入力してください")
-      end
-    end
   end
 end

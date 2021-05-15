@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   # アソシエーション
   belongs_to :user
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications
