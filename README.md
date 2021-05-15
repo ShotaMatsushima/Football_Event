@@ -63,7 +63,7 @@ https://football-event.com/
 <br>
 
 # テスト
-* Rspec
+* Rspec (52ケース カバレッジ率 93.87%) 
   * 単体テスト(model)
   * 機能テスト(request)
   * 結合テスト(system)
