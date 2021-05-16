@@ -72,9 +72,9 @@ https://football-event.com/
 
 # 使用技術
 
-* Ruby 2.5.3
-* Ruby on rails 5.2.4.4
-* Mysql 5.7
+* Ruby
+* Ruby on rails
+* Mysql
 * NGINX
 * Puma
 * unicorn
@@ -86,10 +86,10 @@ https://football-event.com/
   * ACM
   * Route 53
   * S3
-* Docker 19.03.8
-* Docker-compose 1.25.5
-* CircleCi 2.0
-* Rspec 3.10
+* Docker
+* Docker-compose
+* CircleCi
+* Rspec
 * Rubocop
 * Google Map API
 * football-data.org API 
