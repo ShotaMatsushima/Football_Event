@@ -9,7 +9,7 @@ https://football-event.com/
 <br>
 
 ## イベント作成
-![AVAssetExportPreset1920x1080 3 MOV](https://user-images.githubusercontent.com/70948169/118108690-42a29500-b41b-11eb-913b-7982d25f929f.gif)
+![AVAssetExportPreset1920x1080 8 MOV](https://user-images.githubusercontent.com/70948169/118418648-2e4ce980-b6f4-11eb-8a79-4d166540f7c3.gif)
 <br>
 <br>
 ## いいね、コメント、イベント参加機能(Ajax)
