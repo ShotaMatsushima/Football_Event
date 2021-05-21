@@ -18,4 +18,9 @@ class User < ApplicationRecord
   validates :favorite_team, presence: true
   validates :user_address, presence: true
   validates :password, presence: true, on: :create, length: { minimum: 6 }
+  def self.guest
+    find_by!(email: 'testuser@gmail.com') do |user|
+      user.password = 123456
+    end
+  end
 end

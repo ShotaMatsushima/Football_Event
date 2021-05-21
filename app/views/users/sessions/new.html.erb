@@ -7,8 +7,7 @@
     <div class="card-body p-4">
       <div class="form-group px-5">
         <p>会員登録をしていない方は、<%= link_to "こちらから新規登録できます。", new_user_registration_path %></p>
-        <p class="font-weight-bold">テストユーザーEメール: testuser@gmail.com</P>
-        <p class="font-weight-bold">パスワード: 123456</P>
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <table class="mt-5" border="1">
             <tr>
