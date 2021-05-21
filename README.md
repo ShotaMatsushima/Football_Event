@@ -1,7 +1,5 @@
 # FOOTBALL EVENT
 https://football-event.com/
-<br>テストユーザーEメール: `testuser@gmail.com`
-<br>パスワード: `123456`
 
 ![スクリーンショット 2021-05-17 7 18 53](https://user-images.githubusercontent.com/70948169/118414554-3bf87400-b6e0-11eb-9105-af3b4a81133f.png)
 
