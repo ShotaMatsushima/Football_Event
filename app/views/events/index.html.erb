@@ -1,6 +1,15 @@
 <% provide(:title, "Home") %>
-<div class="container">
-  <%= image_tag 'football_pub.jpeg',class:"w-100" %>
+<div class="container text-center">
+  <%= image_tag 'football_pub.png',class:"w-100" %>
+  <div class="text-center">
+    <h3 class="font-weight-bold">みんなとスポーツバーでサッカー観戦をしよう
+      <i class="fas fa-futbol"></i>
+    </h3>
+    <h4 class="font-weight-bold">観戦イベントに参加することができ、観戦イベント作成もできます。</h4>
+  </div>
+</div>
+<div class="text-center mt-4">
+  <%= link_to "イベントを作成する", new_event_path, class: "nav-button btn btn-danger btn-lg" %>
 </div>
 <div class="d-flex flex-row flex-wrap">
   <div class="col-12 col-md-8">

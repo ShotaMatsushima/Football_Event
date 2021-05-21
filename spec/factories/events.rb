@@ -10,6 +10,8 @@ FactoryBot.define do
     event_team { "Liverpool" }
     capacity { 5 }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/top-hero.png')) }
+    latitude { 35.681 }
+    longitude { 139.767 }
   end
 
   factory :event_params, class: Event do
@@ -22,5 +24,7 @@ FactoryBot.define do
     event_team { "Chelsea" }
     capacity { 10 }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/top-hero.png')) }
+    latitude { 35.681 }
+    longitude { 139.767 }
   end
 end

@@ -40,7 +40,6 @@ RSpec.describe "Users", type: :request do
 
       # 登録したユーザー情報が存在していること
       expect(response.body).to include user.name
-      expect(response.body).to include user.email
       expect(response.body).to include user.favorite_team
       expect(response.body).to include user.user_address
     end

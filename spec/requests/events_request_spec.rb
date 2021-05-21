@@ -58,8 +58,6 @@ RSpec.describe "Events", type: :request do
       expect(response.body).to include event.description
       expect(response.body).to include event.address
       expect(response.body).to include event.title
-      expect(response.body).to include event.start_at.to_s
-      expect(response.body).to include event.end_at.to_s
       expect(response.body).to include event.event_team
       expect(response.body).to include event.capacity.to_s
     end

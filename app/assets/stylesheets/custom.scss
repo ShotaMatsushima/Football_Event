@@ -242,9 +242,8 @@ margin: 0 auto;
 }
 
 .reviews {
-  display: -webkit-box;
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 10px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -362,4 +361,8 @@ margin: 0 auto;
 
 .row::before, .row::after {
   display: none;
+}
+
+.event-head {
+  display: flex;
 }
