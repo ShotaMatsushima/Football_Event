@@ -1,0 +1,6 @@
+<div class="users-show">
+  <%= link_to user.name, user_path(user.id), class:"users" %>
+  <% unless current_user?(user)%>
+    <%= render "follow_form", { user: user } %>
+  <% end %>
+</div>

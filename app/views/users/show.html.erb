@@ -1,25 +1,6 @@
 <div class="container">
   <% provide(:title, @user.name) %>
-  <h3>
-    <i class="fas fa-user"></i>
-    ニックネーム:
-    <%= @user.name %></h3>
-  </h3>
-  <h3>
-    <i class="fas fa-home"></i>
-    住まい:
-    <%= @user.user_address %></h3>
-  </h3>
-  <h3>
-    <i class="fas fa-futbol"></i>
-    お気に入りチーム:
-    <%= @user.favorite_team %></h3>
-  </h3>
-  <% if current_user?(@user) %>
-    <div class="actions-edit">
-      <%= link_to "プロフィール編集", edit_user_registration_path(@user.id), class: "card-button btn btn-primary btn-lg" %>
-    </div>
-  <% end %>
+  <%= render "user_info", { user: @user } %>
   <div class="tab-wrap">
     <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">イベント参加履歴</label>
     <div class="tab-content">

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'events#index'
   resources :users, only: [:show] do
     resource :relationships, only: [:create, :destroy]
-    get :follows, on: :member
+    get :following, on: :member
     get :followers, on: :member
   end
   resources :events, only: [:new, :create, :show, :edit, :update, :destroy] do
