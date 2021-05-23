@@ -9,8 +9,8 @@
       <%= link_to "プロフィール編集", edit_user_registration_path(user.id), class: "card-button btn btn-primary btn-lg mr-5" %>
     </div>
   <% else %>
-    <div>
-      <%= render "follow_form", { user: user } %>
+    <div id="follow_buttons_<%= user.id %>">
+      <%= render "relationships/follow_form", { user: user } %>
     </div>
   <% end %>
 </div>
