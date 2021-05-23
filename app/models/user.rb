@@ -22,6 +22,7 @@ class User < ApplicationRecord
   validates :favorite_team, presence: true
   validates :user_address, presence: true
   validates :password, presence: true, on: :create, length: { minimum: 6 }
+
   def self.guest
     find_by!(email: 'testuser@gmail.com') do |user|
       user.password = 123456
@@ -30,5 +31,20 @@ class User < ApplicationRecord
 
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
+  end
+
+  def create_notification_follow!(current_user)
+    # すでにフォローしているか検索
+    temp = Notification.where(
+      ["visiter_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow']
+    )
+    # フォローしていない場合のみ、通知レコードを作成
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 3
+      )
+      notification.save if notification.valid?
+    end
   end
 end
