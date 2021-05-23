@@ -15,6 +15,9 @@ module NotificationsHelper
       @comment = Comment.find_by(id: visiter_comment)&.content
       tag.a(visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" +
       tag.a('あなたのイベント', href: event_path(notification.event_id), style: "font-weight: bold;") + "にコメントしました"
+    when NOTIFICATION_ACTION[:follow]
+      tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" +
+      tag.a('あなた', href: user_path(current_user.id), style: "font-weight: bold;") + "をフォローしました"
     end
   end
 

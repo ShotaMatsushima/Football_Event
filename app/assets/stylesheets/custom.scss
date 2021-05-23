@@ -366,3 +366,20 @@ margin: 0 auto;
 .event-head {
   display: flex;
 }
+
+.user-follow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.users-show {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+.users {
+  margin-top: 15px;
+}

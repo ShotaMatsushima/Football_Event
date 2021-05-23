@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :comments
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id'
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id'
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  has_many :followings, through: :active_relationships, source: :follower
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  has_many :followers, through: :passive_relationships, source: :following
   # カラムのvalidation
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -18,9 +22,29 @@ class User < ApplicationRecord
   validates :favorite_team, presence: true
   validates :user_address, presence: true
   validates :password, presence: true, on: :create, length: { minimum: 6 }
+
   def self.guest
     find_by!(email: 'testuser@gmail.com') do |user|
       user.password = 123456
+    end
+  end
+
+  def followed_by?(user)
+    passive_relationships.find_by(following_id: user.id).present?
+  end
+
+  def create_notification_follow!(current_user)
+    # すでにフォローしているか検索
+    temp = Notification.where(
+      ["visiter_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow']
+    )
+    # フォローしていない場合のみ、通知レコードを作成
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 3
+      )
+      notification.save if notification.valid?
     end
   end
 end

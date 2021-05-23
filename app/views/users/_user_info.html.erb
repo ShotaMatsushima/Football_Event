@@ -1,0 +1,45 @@
+<div class="user-follow">
+  <h3>
+    <i class="fas fa-user"></i>
+    ニックネーム:
+    <%= user.name %></h3>
+  </h3>
+  <% if current_user?(user) %>
+    <div class="actions-edit">
+      <%= link_to "プロフィール編集", edit_user_registration_path(user.id), class: "card-button btn btn-primary btn-lg mr-5" %>
+    </div>
+  <% else %>
+    <div id="follow_buttons_<%= user.id %>">
+      <%= render "relationships/follow_form", { user: user } %>
+    </div>
+  <% end %>
+</div>
+<h3 class="mb-5">
+  <i class="fas fa-home"></i>
+  住まい:
+  <%= user.user_address %></h3>
+</h3>
+<h3 class="mb-5">
+  <i class="fas fa-futbol"></i>
+  お気に入りチーム:
+  <%= user.favorite_team %></h3>
+</h3>
+<h3>
+  <i class="fas fa-user-friends"></i>
+  フォロー
+  <% unless user.followings.count == 0 %>
+    <%= link_to following_user_path do %>
+      <%= user.followings.count %>
+    <% end %>
+  <% else %>
+    <%= user.followings.count %>
+  <% end %>
+  フォロワー
+  <% unless user.followers.count == 0 %>
+    <%= link_to followers_user_path do %>
+      <%= user.followers.count %>
+    <% end %>
+  <% else %>
+    <%= user.followers.count %>
+  <% end %>
+</h3>
