@@ -42,7 +42,9 @@ https://football-event.com/
 <br>
 
 # 機能一覧
-* ユーザー登録、ログイン機能(devise)
+* ユーザー登録、ログイン機能(devise) 
+
+* フォロー機能(Ajax)
 
 * イベント投稿機能
   * 画像投稿(carrierwave)
