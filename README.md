@@ -109,7 +109,7 @@ https://football-event.com/
 
 # ER図
 
-![Database ER diagram (crow's foot)](https://user-images.githubusercontent.com/70948169/119417165-2b737980-bd30-11eb-898e-400abeafd533.png)
+![Database ER diagram (crow's foot) (2)](https://user-images.githubusercontent.com/70948169/120879557-37e4b580-c5ff-11eb-9ffc-bbb17f290f32.png)
 
 
 # こだわったポイント
